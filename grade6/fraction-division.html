@@ -9,7 +9,7 @@
     <style>
         body { background-color: #e9ecef; font-family: "Noto Sans TC", sans-serif; }
         
-        /* 響應式 A4 預覽外觀：更柔和的陰影與乾淨的背景 */
+        /* 螢幕預覽時的 A4 外觀 */
         .sheet-box { 
             background: white; 
             width: 100%;
@@ -17,28 +17,24 @@
             margin: 0 auto;
             border-radius: 8px; 
             box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
-            padding: 30px 20px; /* 手機版安全內距 */
+            padding: 30px 20px;
             box-sizing: border-box;
         }
 
-        /* 電腦版 A4 比例 */
         @media (min-width: 768px) {
             .sheet-box {
-                padding: 20mm;
+                padding: 15mm 20mm;
                 min-height: 297mm;
             }
         }
 
-        /* 題目排版：加大字體、放寬行高、絕不硬切字 */
+        /* 基本題目排版 */
         .math-problem { 
             font-size: 1.15rem; 
-            margin-bottom: 28px; /* 增加各題之間的呼吸空間 */
+            margin-bottom: 25px; 
             line-height: 2.2; 
-            padding-left: 10px;
-            padding-right: 10px;
         }
 
-        /* 隱藏列印表頭，列印時才顯示 */
         .exam-header-info {
             display: none; 
             border-bottom: 2px solid #000;
@@ -46,30 +42,60 @@
             margin-bottom: 25px;
         }
 
-        /* 標準 Word 風格 A4 列印設定 */
+        /* ==========================================
+           列印專屬設定（徹底解決第一頁空白與排版黏死問題）
+           ========================================== */
         @media print {
             @page {
                 size: A4 portrait;
-                /* 標準上下左右留白，請確認列印視窗的邊界設為「預設」 */
-                margin: 15mm 20mm; 
+                margin: 15mm 20mm; /* 標準 A4 上下左右留白 */
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
             
             .sheet-box { 
                 box-shadow: none !important; 
-                padding: 0 !important; /* 邊界交給 @page 處理，內部不再推擠 */
+                padding: 0 !important; 
                 margin: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 min-height: auto !important;
             }
+            
             .exam-header-info {
                 display: flex !important;
                 justify-content: space-between;
-                font-size: 1.1rem; /* 印出來的字體再稍微放大 */
+                font-size: 1.1rem; 
                 font-weight: bold;
             }
+
+            /* 1. 關閉 Flexbox，解決 Chrome 遇到分頁時第一頁空白的 Bug */
+            #problemContainer {
+                display: block !important; 
+            }
+            
+            /* 2. 單欄排版：強制佔滿整行，解決頭尾黏在一起無法斷行的問題 */
+            .col-12.math-problem {
+                display: block !important;
+                width: 100% !important;
+                clear: both !important;
+                margin-bottom: 30px !important;
+            }
+
+            /* 3. 雙欄排版：改用 inline-block 取代 flex，完美支援自動換頁 */
+            .col-md-6.math-problem {
+                display: inline-block !important;
+                width: 48% !important; 
+                vertical-align: top !important;
+                margin-bottom: 30px !important;
+            }
+
+            /* 4. 確保單一題目不會被跨頁切成兩半 */
+            .math-problem {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
@@ -79,7 +105,7 @@
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg no-print mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-arrow-left me-2"></i>返回國小六年級數學・無限計算題庫首頁</a>
-            <span class="navbar-text text-white-50">第 2 章 分數除法無限產生器</span>
+            <span class="navbar-text text-white-50">第 2 章 分數除法無限出題產生器</span>
         </div>
     </nav>
 
@@ -96,7 +122,7 @@
                         <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.2" id="c2" checked><label class="form-check-label small" for="c2">2.2 同分母分數除法</label></div>
                         <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.3" id="c3" checked><label class="form-check-label small" for="c3">2.3 異分母分數除法</label></div>
                         <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 商與被除數大小關係</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數 (\\(\\square\\))</label></div>
+                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數</label></div>
                     </div>
 
                     <div class="mb-3">
@@ -108,14 +134,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label small fw-bold">題數設定（總分固定 100 分）</label>
+                        <label class="form-label small fw-bold">題數設定（總分 100 分）</label>
                         <select id="qCount" class="form-select form-select-sm">
                             <option value="10">10 題（每題 10 分）</option>
                             <option value="20">20 題（每題 5 分）</option>
                             <option value="25" selected>25 題（每題 4 分）</option>
                             <option value="40">40 題（每題 2.5 分）</option>
                             <option value="50">50 題（每題 2 分）</option>
-                            <option value="100">100 題（每題 1 分）</option>
                         </select>
                     </div>
 
@@ -124,7 +149,7 @@
                 </div>
             </div>
 
-            <!-- 右側 A4 模擬預覽與列印區 -->
+            <!-- 右側考卷預覽區 -->
             <div class="col-lg-9 px-0 px-md-2 mb-5">
                 <div class="sheet-box print-area">
                     
@@ -171,6 +196,57 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+        // 將分子、分母標準化為 LaTeX 格式 (包含自動處理整數與帶分數)
+        function toMixedLaTeX(n, d) {
+            let [sN, sD] = simplify(n, d);
+            if (sD === 1) return `${sN}`; // 分母為 1 直接回傳整數
+            if (sN > sD) {
+                let whole = Math.floor(sN / sD);
+                let rem = sN % sD;
+                return `${whole}\\frac{${rem}}{${sD}}`;
+            }
+            return `\\frac{${sN}}{${sD}}`;
+        }
+
+        // 全新升級：隨機產生真分數、假分數、帶分數與「整數」
+        function generateFraction(forceDenom = null, allowInteger = true) {
+            // 如果允許整數，就多一種可能性 (type 4)
+            let maxType = allowInteger ? 4 : 3;
+            let type = getRandomInt(1, maxType);
+            let n, d, text;
+
+            // 如果指定了分母（通常是同分母單元），就不產生整數，強迫退回分數模式
+            if (forceDenom) type = getRandomInt(1, 3);
+            
+            if (type === 4) {
+                // 產生整數 (避免 1 太無聊，從 2 開始)
+                n = getRandomInt(2, 15);
+                d = 1;
+                text = `${n}`;
+            } else {
+                d = forceDenom || getRandomInt(3, 10);
+                if (type === 1) { // 真分數
+                    n = getRandomInt(1, d - 1);
+                    let [sN, sD] = simplify(n, d);
+                    text = `\\frac{${sN}}{${sD}}`;
+                    n = sN; d = sD;
+                } else if (type === 2) { // 假分數
+                    n = getRandomInt(d + 1, d * 3);
+                    let [sN, sD] = simplify(n, d);
+                    text = sD === 1 ? `${sN}` : `\\frac{${sN}}{${sD}}`;
+                    n = sN; d = sD;
+                } else { // 帶分數
+                    let whole = getRandomInt(1, 3);
+                    let rem = getRandomInt(1, d - 1);
+                    let [sRem, sD] = simplify(rem, d);
+                    n = whole * sD + sRem;
+                    d = sD;
+                    text = `${whole}\\frac{${sRem}}{${sD}}`;
+                }
+            }
+            return { n, d, text };
+        }
+
         let currentProblems = [];
 
         function generateProblems() {
@@ -197,92 +273,90 @@
             for (let i = 0; i < count; i++) {
                 let probText = "";
                 let ansStr = "";
-                let isFullWidth = false; // 關鍵：標記是否需要佔滿整行
+                let isFullWidth = false; 
 
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
                 if (mode === '2.1') {
-                    let d = getRandomInt(6, 24);
-                    let n = getRandomInt(2, d - 1);
-                    let [sN, sD] = simplify(n, d);
-                    if (sN === n) { n = sN * 2; d = sD * 2; }
+                    // 最簡分數 (化簡大數字)
+                    let d = getRandomInt(4, 24);
+                    let multiplier = getRandomInt(2, 5);
+                    let realD = d * multiplier;
+                    let realN = getRandomInt(2, realD * 2) * multiplier; 
                     
-                    probText = `\\( \\frac{${n}}{${d}} = \\text{（化成最簡分數）} \\)`;
-                    ansStr = `\\( \\frac{${sN}}{${sD}} \\)`;
+                    probText = `\\( \\frac{${realN}}{${realD}} = \\text{（化為最簡分數）} \\)`;
+                    ansStr = `\\( ${toMixedLaTeX(realN, realD)} \\)`;
 
                 } else if (mode === '2.2') {
-                    let d = getRandomInt(5, 15);
-                    let n1 = getRandomInt(2, d - 1);
-                    let n2 = getRandomInt(1, n1);
-                    let [sN, sD] = simplify(n1, n2);
-                    let ansVal = sD === 1 ? `${sN}` : `\\(\\frac{${sN}}{${sD}}\\)`;
+                    // 同分母：使用相同分母，不允許整數以符合題意
+                    let d = getRandomInt(4, 12);
+                    let f1 = generateFraction(d, false);
+                    let f2 = generateFraction(d, false);
 
-                    probText = `\\( \\frac{${n1}}{${d}} \\div \\frac{${n2}}{${d}} = \\)`;
-                    ansStr = ansVal;
+                    let ansN = f1.n * f2.d;
+                    let ansD = f1.d * f2.n;
+                    
+                    probText = `\\( ${f1.text} \\div ${f2.text} = \\)`;
+                    ansStr = `\\( ${toMixedLaTeX(ansN, ansD)} \\)`;
 
                 } else if (mode === '2.3') {
-                    let d1 = getRandomInt(3, 10);
-                    let n1 = getRandomInt(1, d1 + 2);
-                    let d2 = getRandomInt(3, 10);
-                    let n2 = getRandomInt(1, d2 + 2);
-
-                    let ansN = n1 * d2;
-                    let ansD = d1 * n2;
-                    let [sN, sD] = simplify(ansN, ansD);
-                    let ansVal = sD === 1 ? `${sN}` : `\\(\\frac{${sN}}{${sD}}\\)`;
-
-                    probText = `\\( \\frac{${n1}}{${d1}} \\div \\frac{${n2}}{${d2}} = \\)`;
-                    ansStr = ansVal;
-
-                } else if (mode === '2.4') {
-                    isFullWidth = true; // 關鍵：2.4 題型文字長，強制獨立佔滿一行
-                    let d1 = getRandomInt(3, 9);
-                    let n1 = getRandomInt(1, d1 + 3);
-
-                    let relationType = getRandomInt(1, 3);
-                    let divisorText = "";
-                    let correctSymbol = "";
-
-                    if (relationType === 1) {
-                        let subD = getRandomInt(2, 5);
-                        let subN = getRandomInt(subD + 1, subD + 4);
-                        divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = "&lt;"; // 小於
-                    } else if (relationType === 2) {
-                        let subD = getRandomInt(3, 8);
-                        let subN = getRandomInt(1, subD - 1);
-                        divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = "&gt;"; // 大於
-                    } else {
-                        divisorText = "1";
-                        correctSymbol = "="; // 等於
+                    // 異分母：隨機帶入分數或整數
+                    let f1 = generateFraction(null, true);
+                    let f2 = generateFraction(null, true);
+                    
+                    // 防呆：確保不會兩個都是整數 (分母同為 1)
+                    while(f1.d === f2.d) { 
+                        f2 = generateFraction(null, true); 
                     }
 
-                    probText = `不用實際計算，判斷 \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\) 與 \\( \\frac{${n1}}{${d1}} \\) 的大小關係：`;
+                    let ansN = f1.n * f2.d;
+                    let ansD = f1.d * f2.n;
+
+                    probText = `\\( ${f1.text} \\div ${f2.text} = \\)`;
+                    ansStr = `\\( ${toMixedLaTeX(ansN, ansD)} \\)`;
+
+                } else if (mode === '2.4') {
+                    isFullWidth = true; 
+                    let f1 = generateFraction();
+                    let relationType = getRandomInt(1, 3);
+                    let f2;
+                    let correctSymbol = "";
+
+                    if (relationType === 1) { // 除數 > 1 (可能是假分數、帶分數或整數)
+                        f2 = generateFraction(null, true);
+                        while(f2.n <= f2.d) { f2 = generateFraction(null, true); } 
+                        correctSymbol = "&lt;"; 
+                    } else if (relationType === 2) { // 除數 < 1 (只能是真分數，不能有整數)
+                        f2 = generateFraction(null, false);
+                        while(f2.n >= f2.d) { f2 = generateFraction(null, false); } 
+                        correctSymbol = "&gt;"; 
+                    } else { // 等於 1
+                        f2 = { text: "1" };
+                        correctSymbol = "="; 
+                    }
+
+                    probText = `不用實際計算，判斷大小關係：<br> \\( ${f1.text} \\div ${f2.text} \\quad [ \\quad ] \\quad ${f1.text} \\)`;
                     ansStr = `<strong>${correctSymbol}</strong>`;
 
                 } else if (mode === '2.5') {
-                    let d1 = getRandomInt(2, 8);
-                    let n1 = getRandomInt(1, d1 + 2);
-                    let d2 = getRandomInt(2, 8);
-                    let n2 = getRandomInt(1, d2 + 2);
-
-                    let ansN = n1 * d2;
-                    let ansD = d1 * n2;
-                    let [sN, sD] = simplify(ansN, ansD);
+                    let f1 = generateFraction(null, true);
+                    let f2 = generateFraction(null, true);
+                    
+                    // 確保不會全都是整數
+                    while (f1.d === 1 && f2.d === 1) {
+                        f2 = generateFraction(null, true);
+                    }
 
                     if (Math.random() > 0.5) {
-                        probText = `\\( \\square \\div \\frac{${n2}}{${d2}} = \\frac{${sN}}{${sD}} \\)，\\(\\square = \\)`;
-                        let orgN = sN * n2;
-                        let orgD = sD * d2;
-                        let [oN, oD] = simplify(orgN, orgD);
-                        ansStr = oD === 1 ? `${oN}` : `\\(\\frac{${oN}}{${oD}}\\)`;
+                        let oN = f1.n * f2.n;
+                        let oD = f1.d * f2.d;
+                        probText = `\\( \\square \\div ${f2.text} = ${f1.text} \\)，\\(\\square = \\)`;
+                        ansStr = `\\( ${toMixedLaTeX(oN, oD)} \\)`;
                     } else {
-                        probText = `\\( \\frac{${n1}}{${d1}} \\div \\square = \\frac{${sN}}{${sD}} \\)，\\(\\square = \\)`;
-                        let orgN = n1 * sD;
-                        let orgD = d1 * sN;
-                        let [oN, oD] = simplify(orgN, orgD);
-                        ansStr = oD === 1 ? `${oN}` : `\\(\\frac{${oN}}{${oD}}\\)`;
+                        let oN = f1.n * f2.d;
+                        let oD = f1.d * f2.n;
+                        probText = `\\( ${f1.text} \\div \\square = ${f2.text} \\)，\\(\\square = \\)`;
+                        ansStr = `\\( ${toMixedLaTeX(oN, oD)} \\)`;
                     }
                 }
 
@@ -290,7 +364,7 @@
                     id: i + 1,
                     text: probText,
                     answer: ansStr,
-                    fullWidth: isFullWidth // 綁定是否滿版的屬性
+                    fullWidth: isFullWidth 
                 });
             }
             renderSheet();
@@ -307,7 +381,6 @@
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
                 
-                // 如果是單欄模式，或是該題有標記需要滿版(例如 2.4)，就給 col-12
                 if (layoutMode === '1' || p.fullWidth) {
                     col.className = 'col-12 math-problem';
                 } else {
@@ -318,7 +391,17 @@
                     ? `<span class="text-danger fw-bold ms-2 fs-5">${p.answer}</span>` 
                     : `<span class="text-muted ms-2">_________________</span>`;
                 
-                col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
+                if (p.text.includes("不用實際計算")) {
+                    if(isAnswerMode) {
+                        let answeredText = p.text.replace('[ \\quad ]', `[ <span class="text-danger fw-bold">${p.answer}</span> ]`);
+                        col.innerHTML = `<strong>${p.id}.</strong> ${answeredText}`.replace('<strong><strong>', '<strong>').replace('</strong></strong>', '</strong>');
+                    } else {
+                        col.innerHTML = `<strong>${p.id}.</strong> ${p.text}`;
+                    }
+                } else {
+                    col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
+                }
+                
                 container.appendChild(col);
             });
 
@@ -329,7 +412,6 @@
 
         document.getElementById('btnGenerate').addEventListener('click', generateProblems);
         
-        // 點擊列印時的小提示（可自行移除）
         document.getElementById('btnPrint').addEventListener('click', () => {
             window.print();
         });
