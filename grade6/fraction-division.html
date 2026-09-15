@@ -54,7 +54,7 @@
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg no-print">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-arrow-left me-2"></i>返回六上題庫首頁</a>
-            <span class="navbar-text text-white-50">第 2 章 分數除法進階產生器</span>
+            <span class="navbar-text text-white-50">第 2 章 分數除法進階產生器（總分 100 分）</span>
         </div>
     </nav>
 
@@ -65,36 +65,27 @@
                 <div class="card p-3 shadow-sm">
                     <h5 class="fw-bold mb-3">出題設定</h5>
                     
-                    <!-- 複選小節 -->
+                    <!-- 複選小節（已將應用題替換為大小關係與未知數） -->
                     <div class="mb-3">
                         <label class="form-label small fw-bold mb-1">選擇練習小節（可複選）</label>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.1" id="c1" checked><label class="form-check-label small" for="c1">2.1 最簡分數化簡</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.2" id="c2" checked><label class="form-check-label small" for="c2">2.2 同分母分數除法</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.3" id="c3" checked><label class="form-check-label small" for="c3">2.3 異分母分數除法</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 分數除法應用題</label></div>
+                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 商與被除數大小關係</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數 (\\(\\square\\))</label></div>
                     </div>
 
-                    <!-- 題數設定（已擴充至 100 題） -->
+                    <!-- 題數設定 -->
                     <div class="mb-3">
-                        <label class="form-label small fw-bold">題數設定</label>
+                        <label class="form-label small fw-bold">題數設定（總分固定 100 分）</label>
                         <select id="qCount" class="form-select form-select-sm">
-                            <option value="10">10 題</option>
-                            <option value="15" selected>15 題</option>
-                            <option value="20">20 題</option>
-                            <option value="25">25 題</option>
-                            <option value="30">30 題</option>
-                            <option value="40">40 題</option>
-                            <option value="50">50 題</option>
-                            <option value="75">75 題</option>
-                            <option value="100">100 題</option>
+                            <option value="10">10 題（每題 10 分）</option>
+                            <option value="20">20 題（每題 5 分）</option>
+                            <option value="25" selected>25 題（每題 4 分）</option>
+                            <option value="40">40 題（每題 2.5 分）</option>
+                            <option value="50">50 題（每題 2 分）</option>
+                            <option value="100">100 題（每題 1 分）</option>
                         </select>
-                    </div>
-
-                    <!-- 配分設定 -->
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">每題配分</label>
-                        <input type="number" id="qScore" class="form-control form-control-sm" value="5" min="1" max="100">
                     </div>
 
                     <button id="btnGenerate" class="btn btn-primary w-100 mb-2"><i class="fas fa-shuffle me-1"></i> 換一批新題目</button>
@@ -116,7 +107,7 @@
                     <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4 no-print">
                         <div>
                             <h3 class="fw-bold m-0" id="sheetTitle">第 2 章 分數除法綜合練習</h3>
-                            <small class="text-muted" id="scoreSubTitle">（每題 5 分，共 75 分）</small>
+                            <small class="text-muted" id="scoreSubTitle">（每題 4 分，共 100 分）</small>
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-outline-secondary btn-sm active" id="tabQ">題目卷</button>
@@ -126,7 +117,7 @@
 
                     <div class="text-center mb-4 d-none d-print-block">
                         <h2 class="fw-bold" id="printSheetTitle">第 2 章 分數除法練習（題目卷）</h2>
-                        <p class="text-muted" id="printScoreSubTitle">（每題 5 分，共 75 分）</p>
+                        <p class="text-muted" id="printScoreSubTitle">（每題 4 分，共 100 分）</p>
                     </div>
 
                     <div id="problemContainer" class="row">
@@ -153,8 +144,12 @@
 
         function generateProblems() {
             const count = parseInt(document.getElementById('qCount').value);
-            const scorePerQ = parseInt(document.getElementById('qScore').value) || 5;
             
+            let scorePerQ = 100 / count;
+            if (scorePerQ % 1 !== 0) {
+                scorePerQ = scorePerQ.toFixed(1);
+            }
+
             const checkboxes = document.querySelectorAll('.sub-cat:checked');
             let selectedCats = Array.from(checkboxes).map(cb => cb.value);
 
@@ -162,8 +157,7 @@
                 selectedCats = ['2.1', '2.2', '2.3', '2.4', '2.5'];
             }
 
-            const totalScore = count * scorePerQ;
-            const scoreText = `（每題 ${scorePerQ} 分，共 ${totalScore} 分）`;
+            const scoreText = `（每題 ${scorePerQ} 分，共 100 分）`;
             document.getElementById('scoreSubTitle').innerText = scoreText;
             document.getElementById('printScoreSubTitle').innerText = scoreText;
 
@@ -176,6 +170,7 @@
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
                 if (mode === '2.1') {
+                    // 2.1 最簡分數
                     let d = getRandomInt(6, 24);
                     let n = getRandomInt(2, d - 1);
                     let [sN, sD] = simplify(n, d);
@@ -185,6 +180,7 @@
                     ansStr = `\\( \\frac{${sN}}{${sD}} \\)`;
 
                 } else if (mode === '2.2') {
+                    // 2.2 同分母除法
                     let d = getRandomInt(5, 15);
                     let n1 = getRandomInt(2, d - 1);
                     let n2 = getRandomInt(1, n1);
@@ -195,6 +191,7 @@
                     ansStr = ansVal;
 
                 } else if (mode === '2.3') {
+                    // 2.3 異分母除法
                     let d1 = getRandomInt(3, 10);
                     let n1 = getRandomInt(1, d1 + 2);
                     let d2 = getRandomInt(3, 10);
@@ -209,20 +206,39 @@
                     ansStr = ansVal;
 
                 } else if (mode === '2.4') {
-                    let d1 = getRandomInt(3, 8);
-                    let n1 = getRandomInt(d1 + 1, d1 + 5);
-                    let d2 = getRandomInt(2, 6);
-                    let n2 = getRandomInt(1, d2);
+                    // 2.4 商與被除數大小關係判定 (不用計算，填入 >、< 或 =)
+                    let d1 = getRandomInt(3, 9);
+                    let n1 = getRandomInt(1, d1 + 3);
+                    let d2 = getRandomInt(3, 9);
+                    let n2 = getRandomInt(1, d2 + 3);
 
-                    let ansN = n1 * d2;
-                    let ansD = d1 * n2;
-                    let [sN, sD] = simplify(ansN, ansD);
-                    let ansVal = sD === 1 ? `${sN}` : `\\(\\frac{${sN}}{${sD}}\\)`;
+                    let relationType = getRandomInt(1, 3); // 1:大於1, 2:小於1, 3:等於1
+                    let divisorText = "";
+                    let correctSymbol = "";
 
-                    probText = `有一條長 \\(\\frac{${n1}}{${d1}}\\) 公尺的帶子，每 \\(\\frac{${n2}}{${d2}}\\) 公尺剪成一段，共可剪成多少段？答：`;
-                    ansStr = `${ansVal} 段`;
+                    if (relationType === 1) {
+                        // 除數 > 1 (假分數)
+                        let subD = getRandomInt(2, 5);
+                        let subN = getRandomInt(subD + 1, subD + 4);
+                        divisorText = `\\frac{${subN}}{${subD}}`;
+                        correctSymbol = "<";
+                    } else if (relationType === 2) {
+                        // 除數 < 1 (真分數)
+                        let subD = getRandomInt(3, 8);
+                        let subN = getRandomInt(1, subD - 1);
+                        divisorText = `\\frac{${subN}}{${subD}}`;
+                        correctSymbol = ">";
+                    } else {
+                        // 除數 = 1
+                        divisorText = "1";
+                        correctSymbol = "=";
+                    }
+
+                    probText = `不用實際計算，判斷商與被除數的大小關係，在框框中填入 \\(>\\)、\\(<\\) 或 \\(=\\)\\(\\_\\)：<br> \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\quad \\Box \\quad \\frac{${n1}}{${d1}} \\)`;
+                    ansStr = `<strong>${correctSymbol}</strong>`;
 
                 } else if (mode === '2.5') {
+                    // 2.5 求未知數
                     let d1 = getRandomInt(2, 8);
                     let n1 = getRandomInt(1, d1 + 2);
                     let d2 = getRandomInt(2, 8);
@@ -264,13 +280,19 @@
 
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
-                col.className = 'col-md-6 math-problem';
+                // 讓大小關係判斷這種文字較長的題目佔滿一整行 (col-12)，其他維持兩欄 (col-md-6)
+                col.className = 'col-12 math-problem';
                 
                 const displayVal = isAnswerMode 
                     ? `<span class="text-danger fw-bold ms-2">${p.answer}</span>` 
                     : `<span class="text-muted">_________________</span>`;
                 
-                col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
+                // 如果是 2.4 大小關係題，它的排版格式特別處理
+                if (p.text.includes("不用實際計算")) {
+                    col.innerHTML = `<strong>${p.id}.</strong> ${p.text.replace('_____', displayVal)}`;
+                } else {
+                    col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
+                }
                 container.appendChild(col);
             });
 
@@ -284,7 +306,6 @@
         
         document.querySelectorAll('.sub-cat').forEach(el => el.addEventListener('change', generateProblems));
         document.getElementById('qCount').addEventListener('change', generateProblems);
-        document.getElementById('qScore').addEventListener('input', generateProblems);
 
         document.getElementById('tabQ').addEventListener('click', function() {
             this.classList.add('active');
