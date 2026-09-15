@@ -113,6 +113,14 @@
 
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
+        @supports (-webkit-touch-callout: none) {
+            @media print {
+                .sheet-box {
+                    padding-top: 25mm !important;
+                    padding-bottom: 25mm !important;
+                }
+            }
+        }
     </style>
 </head>
 <body>
