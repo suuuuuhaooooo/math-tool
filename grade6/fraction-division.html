@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第 2 章 分數除法計算練習產生器 - 庫口袋題庫</title>
+    <!-- 引入 Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -28,9 +29,7 @@
             }
         }
 
-        /* ==========================================
-           考卷雙欄 Z 字型排版系統 (1 2 / 3 4)
-           ========================================== */
+        /* 考卷雙欄 Z 字型排版系統 */
         .problem-grid {
             display: flex;
             flex-wrap: wrap;
@@ -38,7 +37,7 @@
         }
         
         .math-problem { 
-            width: calc(50% - 15px); /* 電腦螢幕上的雙欄寬度 */
+            width: calc(50% - 15px);
             font-size: 1.15rem; 
             margin-bottom: 35px; 
             line-height: 2.2; 
@@ -57,12 +56,11 @@
         }
 
         /* ==========================================
-           列印專屬設定 (乾淨標準版，不再用偏方)
+           列印專屬設定 (乾淨標準版)
            ========================================== */
         @media print {
             @page {
                 size: A4 portrait;
-                /* 強制每一頁的上下有 25mm 留白，左右 20mm 留白。這能解決每一頁的頭尾貼齊問題！ */
                 margin: 25mm 20mm !important; 
             }
             .no-print { display: none !important; }
@@ -83,16 +81,13 @@
                 justify-content: space-between;
                 font-size: 1.1rem; 
                 font-weight: bold;
-                /* 為了防止列印引擎失常，強制在第一頁姓名處再加碼頂部推擠 */
                 padding-top: 10px !important; 
             }
 
-            /* 將 Grid 切換為 Block/Inline-Block，徹底解決雙欄切頁 Bug */
             #problemContainer {
                 display: block !important; 
             }
             
-            /* 單欄排版：強制佔滿整行 */
             .problem-grid.single-column .math-problem,
             .math-problem.full-width {
                 display: block !important;
@@ -101,29 +96,52 @@
                 margin-bottom: 35px !important;
             }
 
-            /* 雙欄 Z 字型排版：左 1 右 2，滿了自動斷行 */
             .math-problem {
                 display: inline-block !important;
                 width: 48% !important; 
                 vertical-align: top !important;
                 margin-bottom: 35px !important;
-                page-break-inside: avoid !important; /* 絕對不把同一題切成兩半 */
+                page-break-inside: avoid !important; 
                 break-inside: avoid !important;
             }
 
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
+
+        /* ==========================================
+           專屬 iPhone / iPad (iOS Safari) 的列印邊界防護罩
+           ========================================== */
         @supports (-webkit-touch-callout: none) {
             @media print {
                 .sheet-box {
-                    padding-top: 25mm !important;
-                    padding-bottom: 25mm !important;
+                    padding: 25mm 20mm !important; /* 強制撐開上下 25mm，左右 20mm */
+                    box-sizing: border-box !important;
                 }
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ==========================================
+         手機版專屬溫馨提示 Modal (彈出視窗)
+         ========================================== -->
+    <div class="modal fade" id="mobileAlertModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered px-3">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-warning text-dark border-0">
+                    <h5 class="modal-title fw-bold"><i class="fas fa-lightbulb me-2"></i>溫馨提示</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <p class="mb-0 fs-5">為了獲得最佳的排版與列印體驗，<br>強烈建議您使用 <strong>「電腦」</strong> 來操作喔！</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-dark px-5" data-bs-dismiss="modal">我知道了</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg no-print mb-4">
         <div class="container">
@@ -185,7 +203,7 @@
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3 mb-4 no-print gap-2">
                         <div>
-                            <h3 class="fw-bold fs-4 m-0" id="sheetTitle">第 2 章 分數除法練習</h3>
+                            <h3 class="fw-bold fs-4 m-0" id="sheetTitle">第 2 章 分數除法綜合練習</h3>
                             <small class="text-muted" id="scoreSubTitle">（每題 4 分，共 100 分）</small>
                         </div>
                         <div class="btn-group shadow-sm" role="group">
@@ -207,7 +225,23 @@
         </div>
     </div>
 
+    <!-- 引入 Bootstrap JS (提供彈出視窗功能) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <script>
+        // ==========================================
+        // 判斷是否為手機並跳出提示視窗
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", function() {
+            // 如果螢幕寬度小於 768px (代表是手機或直向平板)
+            if (window.innerWidth < 768) {
+                var mobileModal = new bootstrap.Modal(document.getElementById('mobileAlertModal'));
+                mobileModal.show();
+            }
+        });
+
+        // 以下為原有的出題邏輯
         function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
 
         function simplify(n, d) {
@@ -448,6 +482,5 @@
 
         generateProblems();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
