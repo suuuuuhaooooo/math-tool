@@ -9,7 +9,7 @@
     <style>
         body { background-color: #f8f9fa; font-family: "Noto Sans TC", sans-serif; }
         
-        /* 螢幕預覽時的 A4 模擬外觀 */
+        /* 螢幕預覽時的 A4 模擬外觀 (寬 210mm) */
         .sheet-box { 
             background: white; 
             width: 210mm;
@@ -17,13 +17,13 @@
             margin: 0 auto;
             border-radius: 4px; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-            padding: 20mm;
+            padding: 15mm;
             box-sizing: border-box;
         }
 
         .math-problem { 
             font-size: 1.1rem; 
-            margin-bottom: 20px; 
+            margin-bottom: 18px; 
             line-height: 2; 
         }
 
@@ -34,11 +34,11 @@
             margin-bottom: 15px;
         }
 
-        /* 嚴格限制 A4 實體列印尺寸與邊界 */
+        /* 嚴格控制實體列印的 A4 邊界與尺寸 */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 15mm; /* 標準 A4 留邊 */
+                margin: 12mm; /* 控制列印邊界大小 */
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
@@ -81,7 +81,7 @@
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.2" id="c2" checked><label class="form-check-label small" for="c2">2.2 同分母分數除法</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.3" id="c3" checked><label class="form-check-label small" for="c3">2.3 異分母分數除法</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 商與被除數大小關係</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數</label></div>
+                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數 (\\(\\square\\))</label></div>
                     </div>
 
                     <div class="mb-3">
@@ -174,6 +174,7 @@
             for (let i = 0; i < count; i++) {
                 let probText = "";
                 let ansStr = "";
+                let isFullWidth = false; // 標記是否為需要佔整行的特殊題型
 
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
@@ -211,10 +212,10 @@
                     ansStr = ansVal;
 
                 } else if (mode === '2.4') {
+                    // 2.4 大小關係判定 (設定為整行，避免版面擠壓)
+                    isFullWidth = true; 
                     let d1 = getRandomInt(3, 9);
                     let n1 = getRandomInt(1, d1 + 3);
-                    let d2 = getRandomInt(3, 9);
-                    let n2 = getRandomInt(1, d2 + 3);
 
                     let relationType = getRandomInt(1, 3);
                     let divisorText = "";
@@ -235,7 +236,7 @@
                         correctSymbol = "=";
                     }
 
-                    probText = `不用實際計算，判斷商與被除數的大小關係，在空格中填入 \\(>\\)、\\(<\\) 或 \\(=\\)\\(\\_\\)：<br> \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\quad \\Box \\quad \\frac{${n1}}{${d1}} \\)`;
+                    probText = `不用實際計算，判斷商與被除數的大小關係，在框框中填入 \\(>\\)、\\(<\\) 或 \\(=\\)\\(\\_\\)：<br> \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\quad [ \\quad ] \\quad \\frac{${n1}}{${d1}} \\)`;
                     ansStr = `<strong>${correctSymbol}</strong>`;
 
                 } else if (mode === '2.5') {
@@ -266,7 +267,8 @@
                 currentProblems.push({
                     id: i + 1,
                     text: probText,
-                    answer: ansStr
+                    answer: ansStr,
+                    fullWidth: isFullWidth
                 });
             }
             renderSheet();
@@ -280,14 +282,20 @@
 
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
-                col.className = 'col-12 math-problem';
+                // 根據題目類型決定是佔一整行 (col-12) 還是左右兩欄 (col-md-6)
+                col.className = p.fullWidth ? 'col-12 math-problem' : 'col-md-6 math-problem';
                 
                 const displayVal = isAnswerMode 
                     ? `<span class="text-danger fw-bold ms-2">${p.answer}</span>` 
                     : `<span class="text-muted">_________________</span>`;
                 
+                // 修復 2.4 大小關係題的答案顯示問題
                 if (p.text.includes("不用實際計算")) {
-                    col.innerHTML = `<strong>${p.id}.</strong> ${p.text.replace('_____', displayVal)}`;
+                    col.innerHTML = `<strong>${p.id}.</strong> ${p.text.replace('[ \\quad ]', `[ \\mathbf{${p.answer}} ]`)}`.replace('<strong>', '').replace('</strong>', ''); // 避免重複強調
+                    if (isAnswerMode) {
+                        // 當切換到答案卷時，將中括號內的底線或空白直接替換為紅色的答案符號
+                        col.innerHTML = `<strong>${p.id}.</strong> ${p.text.replace('[ \\quad ]', `[ <span class="text-danger fw-bold">${p.answer}</span> ]`)}`;
+                    }
                 } else {
                     col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
                 }
