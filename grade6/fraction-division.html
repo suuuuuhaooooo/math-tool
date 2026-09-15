@@ -9,7 +9,7 @@
     <style>
         body { background-color: #f4f6f9; font-family: "Noto Sans TC", sans-serif; overflow-x: hidden; }
         
-        /* 螢幕預覽時的 A4 模擬外觀 */
+        /* 響應式 A4 預覽外觀 */
         .sheet-box { 
             background: white; 
             width: 100%;
@@ -17,25 +17,26 @@
             margin: 0 auto;
             border-radius: 6px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            padding: 20px; 
+            padding: 25px 20px; /* 加大手機版左右內距，防止題號貼邊被切 */
             box-sizing: border-box;
         }
 
         @media (min-width: 768px) {
             .sheet-box {
-                padding: 20mm; /* 電腦螢幕上預覽的內距 */
+                padding: 20mm;
                 min-height: 297mm;
             }
         }
 
+        /* 題目排版防護：確保題號與長算式絕對不會被切掉 */
         .math-problem { 
             font-size: 1.05rem; 
             margin-bottom: 22px; 
             line-height: 2.4; 
             word-break: break-word;
             overflow-wrap: break-word;
-            padding-left: 5px;
-            padding-right: 5px;
+            padding-left: 8px; /* 內縮保護題號 */
+            padding-right: 8px;
         }
 
         .exam-header-info {
@@ -45,21 +46,22 @@
             margin-bottom: 15px;
         }
 
-        /* 關鍵修正：強制控制 A4 實體列印的紙張邊界與四周留白（類似 Word 效果） */
+        /* 雙重保險：列印時強制製造像 Word 一樣的四周 20mm 留白邊界 */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 20mm; /* 放大列印實體邊界，讓上下左右都有像 Word 一樣的留白 */
+                margin: 0; 
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
             .sheet-box { 
                 box-shadow: none !important; 
-                padding: 0 !important; /* 邊界交由 @page 控制，內部不額外加 padding 避免雙重留白 */
+                padding: 20mm !important; /* 強制列印四周留白 */
                 margin: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: auto !important;
+                min-height: 100vh !important;
+                box-sizing: border-box !important;
             }
             .exam-header-info {
                 display: flex !important;
