@@ -23,7 +23,7 @@
 
         @media (min-width: 768px) {
             .sheet-box {
-                padding: 15mm 20mm;
+                padding: 20mm; /* 稍微加大電腦螢幕上預覽的頂部留白 */
                 min-height: 297mm;
             }
         }
@@ -42,13 +42,11 @@
             margin-bottom: 25px;
         }
 
-        /* ==========================================
-           列印專屬設定（徹底解決第一頁空白與排版黏死問題）
-           ========================================== */
+        /* 列印專屬設定 */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 15mm 20mm; /* 標準 A4 上下左右留白 */
+                margin: 15mm 20mm; 
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
@@ -67,14 +65,13 @@
                 justify-content: space-between;
                 font-size: 1.1rem; 
                 font-weight: bold;
+                padding-top: 15mm !important; /* 修正重點：列印時強制往下推，留出考卷頂部空間避免貼齊 */
             }
 
-            /* 1. 關閉 Flexbox，解決 Chrome 遇到分頁時第一頁空白的 Bug */
             #problemContainer {
                 display: block !important; 
             }
             
-            /* 2. 單欄排版：強制佔滿整行，解決頭尾黏在一起無法斷行的問題 */
             .col-12.math-problem {
                 display: block !important;
                 width: 100% !important;
@@ -82,7 +79,6 @@
                 margin-bottom: 30px !important;
             }
 
-            /* 3. 雙欄排版：改用 inline-block 取代 flex，完美支援自動換頁 */
             .col-md-6.math-problem {
                 display: inline-block !important;
                 width: 48% !important; 
@@ -90,7 +86,6 @@
                 margin-bottom: 30px !important;
             }
 
-            /* 4. 確保單一題目不會被跨頁切成兩半 */
             .math-problem {
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
@@ -278,7 +273,6 @@
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
                 if (mode === '2.1') {
-                    // 最簡分數 (化簡大數字)
                     let d = getRandomInt(4, 24);
                     let multiplier = getRandomInt(2, 5);
                     let realD = d * multiplier;
@@ -288,7 +282,6 @@
                     ansStr = `\\( ${toMixedLaTeX(realN, realD)} \\)`;
 
                 } else if (mode === '2.2') {
-                    // 同分母：使用相同分母，不允許整數以符合題意
                     let d = getRandomInt(4, 12);
                     let f1 = generateFraction(d, false);
                     let f2 = generateFraction(d, false);
@@ -300,11 +293,9 @@
                     ansStr = `\\( ${toMixedLaTeX(ansN, ansD)} \\)`;
 
                 } else if (mode === '2.3') {
-                    // 異分母：隨機帶入分數或整數
                     let f1 = generateFraction(null, true);
                     let f2 = generateFraction(null, true);
                     
-                    // 防呆：確保不會兩個都是整數 (分母同為 1)
                     while(f1.d === f2.d) { 
                         f2 = generateFraction(null, true); 
                     }
@@ -322,15 +313,15 @@
                     let f2;
                     let correctSymbol = "";
 
-                    if (relationType === 1) { // 除數 > 1 (可能是假分數、帶分數或整數)
+                    if (relationType === 1) { 
                         f2 = generateFraction(null, true);
                         while(f2.n <= f2.d) { f2 = generateFraction(null, true); } 
                         correctSymbol = "&lt;"; 
-                    } else if (relationType === 2) { // 除數 < 1 (只能是真分數，不能有整數)
+                    } else if (relationType === 2) { 
                         f2 = generateFraction(null, false);
                         while(f2.n >= f2.d) { f2 = generateFraction(null, false); } 
                         correctSymbol = "&gt;"; 
-                    } else { // 等於 1
+                    } else { 
                         f2 = { text: "1" };
                         correctSymbol = "="; 
                     }
@@ -342,7 +333,6 @@
                     let f1 = generateFraction(null, true);
                     let f2 = generateFraction(null, true);
                     
-                    // 確保不會全都是整數
                     while (f1.d === 1 && f2.d === 1) {
                         f2 = generateFraction(null, true);
                     }
