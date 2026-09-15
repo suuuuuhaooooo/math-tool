@@ -7,20 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f4f6f9; font-family: "Noto Sans TC", sans-serif; overflow-x: hidden; }
+        body { background-color: #e9ecef; font-family: "Noto Sans TC", sans-serif; }
         
-        /* 響應式 A4 預覽外觀 */
+        /* 響應式 A4 預覽外觀：更柔和的陰影與乾淨的背景 */
         .sheet-box { 
             background: white; 
             width: 100%;
             max-width: 210mm;
             margin: 0 auto;
-            border-radius: 6px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            padding: 25px 20px; /* 加大手機版左右內距，防止題號貼邊被切 */
+            border-radius: 8px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+            padding: 30px 20px; /* 手機版安全內距 */
             box-sizing: border-box;
         }
 
+        /* 電腦版 A4 比例 */
         @media (min-width: 768px) {
             .sheet-box {
                 padding: 20mm;
@@ -28,45 +29,45 @@
             }
         }
 
-        /* 題目排版防護：確保題號與長算式絕對不會被切掉 */
+        /* 題目排版：加大字體、放寬行高、絕不硬切字 */
         .math-problem { 
-            font-size: 1.05rem; 
-            margin-bottom: 22px; 
-            line-height: 2.4; 
-            word-break: break-word;
-            overflow-wrap: break-word;
-            padding-left: 8px; /* 內縮保護題號 */
-            padding-right: 8px;
+            font-size: 1.15rem; 
+            margin-bottom: 28px; /* 增加各題之間的呼吸空間 */
+            line-height: 2.2; 
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
+        /* 隱藏列印表頭，列印時才顯示 */
         .exam-header-info {
             display: none; 
             border-bottom: 2px solid #000;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
         }
 
-        /* 雙重保險：列印時強制製造像 Word 一樣的四周 20mm 留白邊界 */
+        /* 標準 Word 風格 A4 列印設定 */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 0; 
+                /* 標準上下左右留白，請確認列印視窗的邊界設為「預設」 */
+                margin: 15mm 20mm; 
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
+            
             .sheet-box { 
                 box-shadow: none !important; 
-                padding: 20mm !important; /* 強制列印四周留白 */
+                padding: 0 !important; /* 邊界交給 @page 處理，內部不再推擠 */
                 margin: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: 100vh !important;
-                box-sizing: border-box !important;
+                min-height: auto !important;
             }
             .exam-header-info {
                 display: flex !important;
                 justify-content: space-between;
-                font-size: 0.95rem;
+                font-size: 1.1rem; /* 印出來的字體再稍微放大 */
                 font-weight: bold;
             }
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -75,26 +76,26 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg no-print">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg no-print mb-4">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-arrow-left me-2"></i>返回六上題庫首頁</a>
-            <span class="navbar-text text-white-50">第 2 章 分數除法進階產生器</span>
+            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-arrow-left me-2"></i>返回國小六年級數學・無限計算題庫首頁</a>
+            <span class="navbar-text text-white-50">第 2 章 分數除法無限產生器</span>
         </div>
     </nav>
 
-    <div class="container my-4 px-2 px-md-3">
+    <div class="container px-2 px-md-3">
         <div class="row">
             <!-- 左側控制面板 -->
             <div class="col-lg-3 no-print mb-4">
-                <div class="card p-3 shadow-sm">
-                    <h5 class="fw-bold mb-3">出題設定</h5>
+                <div class="card p-3 shadow-sm border-0">
+                    <h5 class="fw-bold mb-3 border-bottom pb-2">出題設定</h5>
                     
                     <div class="mb-3">
-                        <label class="form-label small fw-bold mb-1">選擇練習小節（可複選）</label>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.1" id="c1" checked><label class="form-check-label small" for="c1">2.1 最簡分數化簡</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.2" id="c2" checked><label class="form-check-label small" for="c2">2.2 同分母分數除法</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.3" id="c3" checked><label class="form-check-label small" for="c3">2.3 異分母分數除法</label></div>
-                        <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 商與被除數大小關係</label></div>
+                        <label class="form-label small fw-bold mb-2">選擇練習小節（可複選）</label>
+                        <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.1" id="c1" checked><label class="form-check-label small" for="c1">2.1 最簡分數化簡</label></div>
+                        <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.2" id="c2" checked><label class="form-check-label small" for="c2">2.2 同分母分數除法</label></div>
+                        <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.3" id="c3" checked><label class="form-check-label small" for="c3">2.3 異分母分數除法</label></div>
+                        <div class="form-check mb-1"><input class="form-check-input sub-cat" type="checkbox" value="2.4" id="c4" checked><label class="form-check-label small" for="c4">2.4 商與被除數大小關係</label></div>
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數 (\\(\\square\\))</label></div>
                     </div>
 
@@ -106,7 +107,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label class="form-label small fw-bold">題數設定（總分固定 100 分）</label>
                         <select id="qCount" class="form-select form-select-sm">
                             <option value="10">10 題（每題 10 分）</option>
@@ -118,13 +119,13 @@
                         </select>
                     </div>
 
-                    <button id="btnGenerate" class="btn btn-primary w-100 mb-2"><i class="fas fa-shuffle me-1"></i> 換一批新題目</button>
-                    <button id="btnPrint" class="btn btn-success w-100"><i class="fas fa-print me-1"></i> 列印 / 存成 PDF</button>
+                    <button id="btnGenerate" class="btn btn-primary w-100 mb-2 py-2"><i class="fas fa-shuffle me-1"></i> 換一批新題目</button>
+                    <button id="btnPrint" class="btn btn-success w-100 py-2"><i class="fas fa-print me-1"></i> 列印 / 存成 PDF</button>
                 </div>
             </div>
 
             <!-- 右側 A4 模擬預覽與列印區 -->
-            <div class="col-lg-9 px-0 px-md-2">
+            <div class="col-lg-9 px-0 px-md-2 mb-5">
                 <div class="sheet-box print-area">
                     
                     <div class="exam-header-info">
@@ -139,9 +140,9 @@
                             <h3 class="fw-bold fs-4 m-0" id="sheetTitle">第 2 章 分數除法綜合練習</h3>
                             <small class="text-muted" id="scoreSubTitle">（每題 4 分，共 100 分）</small>
                         </div>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-secondary btn-sm active" id="tabQ">題目卷</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" id="tabA">答案卷</button>
+                        <div class="btn-group shadow-sm" role="group">
+                            <button type="button" class="btn btn-outline-primary btn-sm active" id="tabQ">題目卷</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="tabA">答案卷</button>
                         </div>
                     </div>
 
@@ -196,6 +197,7 @@
             for (let i = 0; i < count; i++) {
                 let probText = "";
                 let ansStr = "";
+                let isFullWidth = false; // 關鍵：標記是否需要佔滿整行
 
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
@@ -233,7 +235,7 @@
                     ansStr = ansVal;
 
                 } else if (mode === '2.4') {
-                    // 2.4 大小關係判定：改為與其他題型一樣，答案顯示在後面
+                    isFullWidth = true; // 關鍵：2.4 題型文字長，強制獨立佔滿一行
                     let d1 = getRandomInt(3, 9);
                     let n1 = getRandomInt(1, d1 + 3);
 
@@ -245,15 +247,15 @@
                         let subD = getRandomInt(2, 5);
                         let subN = getRandomInt(subD + 1, subD + 4);
                         divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = "&lt;";
+                        correctSymbol = "&lt;"; // 小於
                     } else if (relationType === 2) {
                         let subD = getRandomInt(3, 8);
                         let subN = getRandomInt(1, subD - 1);
                         divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = "&gt;";
+                        correctSymbol = "&gt;"; // 大於
                     } else {
                         divisorText = "1";
-                        correctSymbol = "=";
+                        correctSymbol = "="; // 等於
                     }
 
                     probText = `不用實際計算，判斷 \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\) 與 \\( \\frac{${n1}}{${d1}} \\) 的大小關係：`;
@@ -287,7 +289,8 @@
                 currentProblems.push({
                     id: i + 1,
                     text: probText,
-                    answer: ansStr
+                    answer: ansStr,
+                    fullWidth: isFullWidth // 綁定是否滿版的屬性
                 });
             }
             renderSheet();
@@ -304,15 +307,16 @@
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
                 
-                if (layoutMode === '1') {
+                // 如果是單欄模式，或是該題有標記需要滿版(例如 2.4)，就給 col-12
+                if (layoutMode === '1' || p.fullWidth) {
                     col.className = 'col-12 math-problem';
                 } else {
                     col.className = 'col-md-6 math-problem';
                 }
                 
                 const displayVal = isAnswerMode 
-                    ? `<span class="text-danger fw-bold ms-2">${p.answer}</span>` 
-                    : `<span class="text-muted">_________________</span>`;
+                    ? `<span class="text-danger fw-bold ms-2 fs-5">${p.answer}</span>` 
+                    : `<span class="text-muted ms-2">_________________</span>`;
                 
                 col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
                 container.appendChild(col);
@@ -324,7 +328,11 @@
         }
 
         document.getElementById('btnGenerate').addEventListener('click', generateProblems);
-        document.getElementById('btnPrint').addEventListener('click', () => window.print());
+        
+        // 點擊列印時的小提示（可自行移除）
+        document.getElementById('btnPrint').addEventListener('click', () => {
+            window.print();
+        });
         
         document.querySelectorAll('.sub-cat').forEach(el => el.addEventListener('change', generateProblems));
         document.getElementById('qCount').addEventListener('change', generateProblems);
