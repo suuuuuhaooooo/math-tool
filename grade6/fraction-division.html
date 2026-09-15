@@ -112,7 +112,7 @@
         function renderSheet() {
             const container = document.getElementById('problemContainer');
             container.innerHTML = '';
-
+        
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
                 col.className = 'col-md-6 math-problem';
@@ -120,6 +120,11 @@
                 col.innerHTML = `<strong>${p.id}.</strong> ${p.text} &nbsp; ${displayVal}`;
                 container.appendChild(col);
             });
+        
+            // 關鍵：每次動態更新完畫面後，讓 MathJax 重新渲染新產生的公式
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
         }
 
         // 事件監聽
