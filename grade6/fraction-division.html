@@ -9,6 +9,7 @@
     <style>
         body { background-color: #f4f6f9; font-family: "Noto Sans TC", sans-serif; overflow-x: hidden; }
         
+        /* 螢幕預覽時的 A4 模擬外觀 */
         .sheet-box { 
             background: white; 
             width: 100%;
@@ -22,7 +23,7 @@
 
         @media (min-width: 768px) {
             .sheet-box {
-                padding: 18mm;
+                padding: 20mm; /* 電腦螢幕上預覽的內距 */
                 min-height: 297mm;
             }
         }
@@ -44,16 +45,17 @@
             margin-bottom: 15px;
         }
 
+        /* 關鍵修正：強制控制 A4 實體列印的紙張邊界與四周留白（類似 Word 效果） */
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 12mm; 
+                margin: 20mm; /* 放大列印實體邊界，讓上下左右都有像 Word 一樣的留白 */
             }
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; }
             .sheet-box { 
                 box-shadow: none !important; 
-                padding: 0 !important; 
+                padding: 0 !important; /* 邊界交由 @page 控制，內部不額外加 padding 避免雙重留白 */
                 margin: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
