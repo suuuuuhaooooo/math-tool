@@ -9,7 +9,6 @@
     <style>
         body { background-color: #f4f6f9; font-family: "Noto Sans TC", sans-serif; overflow-x: hidden; }
         
-        /* 響應式 A4 預覽外觀：手機上自動縮小至 100%，電腦上維持 210mm A4 寬度 */
         .sheet-box { 
             background: white; 
             width: 100%;
@@ -17,11 +16,10 @@
             margin: 0 auto;
             border-radius: 6px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            padding: 15px; /* 手機版預設小內距 */
+            padding: 20px; 
             box-sizing: border-box;
         }
 
-        /* 電腦版時放大預覽內距 */
         @media (min-width: 768px) {
             .sheet-box {
                 padding: 18mm;
@@ -31,8 +29,12 @@
 
         .math-problem { 
             font-size: 1.05rem; 
-            margin-bottom: 20px; 
-            line-height: 2; 
+            margin-bottom: 22px; 
+            line-height: 2.4; 
+            word-break: break-word;
+            overflow-wrap: break-word;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
         .exam-header-info {
@@ -42,7 +44,6 @@
             margin-bottom: 15px;
         }
 
-        /* 嚴格控制實體列印的 A4 邊界與尺寸 */
         @media print {
             @page {
                 size: A4 portrait;
@@ -93,7 +94,6 @@
                         <div class="form-check"><input class="form-check-input sub-cat" type="checkbox" value="2.5" id="c5" checked><label class="form-check-label small" for="c5">2.5 求未知數 (\\(\\square\\))</label></div>
                     </div>
 
-                    <!-- 排版設定 -->
                     <div class="mb-3">
                         <label class="form-label small fw-bold">排版版面</label>
                         <select id="layoutMode" class="form-select form-select-sm">
@@ -192,7 +192,6 @@
             for (let i = 0; i < count; i++) {
                 let probText = "";
                 let ansStr = "";
-                let isFullWidth = false;
 
                 let mode = selectedCats[getRandomInt(0, selectedCats.length - 1)];
 
@@ -230,7 +229,7 @@
                     ansStr = ansVal;
 
                 } else if (mode === '2.4') {
-                    isFullWidth = true; 
+                    // 2.4 大小關係判定：改為與其他題型一樣，答案顯示在後面
                     let d1 = getRandomInt(3, 9);
                     let n1 = getRandomInt(1, d1 + 3);
 
@@ -242,19 +241,19 @@
                         let subD = getRandomInt(2, 5);
                         let subN = getRandomInt(subD + 1, subD + 4);
                         divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = "<";
+                        correctSymbol = "&lt;";
                     } else if (relationType === 2) {
                         let subD = getRandomInt(3, 8);
                         let subN = getRandomInt(1, subD - 1);
                         divisorText = `\\frac{${subN}}{${subD}}`;
-                        correctSymbol = ">";
+                        correctSymbol = "&gt;";
                     } else {
                         divisorText = "1";
                         correctSymbol = "=";
                     }
 
-                    probText = `不用實際計算，判斷商與被除數的大小關係，在空格中填入 \\(>\\)、\\(<\\) 或 \\(=\\)：<br> \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\quad \\boxed{\\phantom{x}} \\quad \\frac{${n1}}{${d1}} \\)`;
-                    ansStr = `\\( \\boxed{\\mathbf{${correctSymbol}}} \\)`;
+                    probText = `不用實際計算，判斷 \\( \\frac{${n1}}{${d1}} \\div ${divisorText} \\) 與 \\( \\frac{${n1}}{${d1}} \\) 的大小關係：`;
+                    ansStr = `<strong>${correctSymbol}</strong>`;
 
                 } else if (mode === '2.5') {
                     let d1 = getRandomInt(2, 8);
@@ -284,8 +283,7 @@
                 currentProblems.push({
                     id: i + 1,
                     text: probText,
-                    answer: ansStr,
-                    fullWidth: isFullWidth
+                    answer: ansStr
                 });
             }
             renderSheet();
@@ -302,26 +300,17 @@
             currentProblems.forEach(p => {
                 const col = document.createElement('div');
                 
-                if (layoutMode === '1' || p.fullWidth) {
+                if (layoutMode === '1') {
                     col.className = 'col-12 math-problem';
                 } else {
                     col.className = 'col-md-6 math-problem';
                 }
                 
-                if (isAnswerMode) {
-                    if (p.text.includes("不用實際計算")) {
-                        let answeredText = p.text.replace('\\boxed{\\phantom{x}}', `\\boxed{\\text{\\color{red}{${p.answer.replace(/\\\(|\\\)/g, '').replace(/\\mathbf{/g, '').replace(/}/g, '')}}}`);
-                        col.innerHTML = `<strong>${p.id}.</strong> ${answeredText}`;
-                    } else {
-                        col.innerHTML = `<strong>${p.id}.</strong> ${p.text} <span class="text-danger fw-bold ms-2">${p.answer}</span>`;
-                    }
-                } else {
-                    if (p.text.includes("不用實際計算")) {
-                        col.innerHTML = `<strong>${p.id}.</strong> ${p.text}`;
-                    } else {
-                        col.innerHTML = `<strong>${p.id}.</strong> ${p.text} <span class="text-muted">_________________</span>`;
-                    }
-                }
+                const displayVal = isAnswerMode 
+                    ? `<span class="text-danger fw-bold ms-2">${p.answer}</span>` 
+                    : `<span class="text-muted">_________________</span>`;
+                
+                col.innerHTML = `<strong>${p.id}.</strong> ${p.text} ${displayVal}`;
                 container.appendChild(col);
             });
 
