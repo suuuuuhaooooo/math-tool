@@ -108,13 +108,10 @@
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
 
-        /* ==========================================
-           專屬 iPhone / iPad (iOS Safari) 的列印邊界防護罩
-           ========================================== */
         @supports (-webkit-touch-callout: none) {
             @media print {
                 .sheet-box {
-                    padding: 25mm 20mm !important; /* 強制撐開上下 25mm，左右 20mm */
+                    padding: 20mm 12mm !important; /* 強制撐開上下 25mm，左右 20mm */
                     box-sizing: border-box !important;
                 }
             }
@@ -182,6 +179,8 @@
                             <option value="25" selected>25 題（每題 4 分）</option>
                             <option value="40">40 題（每題 2.5 分）</option>
                             <option value="50">50 題（每題 2 分）</option>
+                            <!-- 把 100 題的選項加回來了！ -->
+                            <option value="100">100 題（每題 1 分）</option>
                         </select>
                     </div>
 
