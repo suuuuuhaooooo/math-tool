@@ -23,9 +23,30 @@
 
         @media (min-width: 768px) {
             .sheet-box {
-                padding: 25mm 20mm;
+                padding: 25mm 20mm; /* 螢幕預覽時的上下左右留白 */
                 min-height: 297mm;
             }
+        }
+
+        /* ==========================================
+           考卷雙欄 Z 字型排版系統 (1 2 / 3 4)
+           ========================================== */
+        .problem-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; 
+        }
+        
+        .math-problem { 
+            width: calc(50% - 15px); /* 電腦螢幕上的雙欄寬度 */
+            font-size: 1.15rem; 
+            margin-bottom: 35px; 
+            line-height: 2.2; 
+        }
+
+        .problem-grid.single-column .math-problem,
+        .math-problem.full-width {
+            width: 100%;
         }
 
         .exam-header-info {
@@ -36,40 +57,16 @@
         }
 
         /* ==========================================
-           全新的考卷專用排版系統 (保證 1 2 / 3 4 排列)
-           ========================================== */
-        .problem-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* 自動平均分配左右空間 */
-        }
-        
-        .math-problem { 
-            width: calc(50% - 15px); /* 雙欄模式下，強制定寬為一半再扣掉間距 */
-            font-size: 1.15rem; 
-            margin-bottom: 35px; /* 題與題之間的上下間距 */
-            line-height: 2.2; 
-            page-break-inside: avoid; /* 列印時絕對不切斷同一題 */
-            break-inside: avoid;
-        }
-
-        /* 單欄模式或是需要整行的題型（如 2.4 大小關係） */
-        .problem-grid.single-column .math-problem,
-        .math-problem.full-width {
-            width: 100%;
-        }
-
-        /* ==========================================
-           列印專屬設定（鎖死紙張留白，其餘交給上方系統）
+           列印專屬設定 (乾淨標準版，不再用偏方)
            ========================================== */
         @media print {
             @page {
                 size: A4 portrait;
-                /* 保證每一頁的頭部跟底部都有 25mm 的標準留白 */
+                /* 強制每一頁的上下有 25mm 留白，左右 20mm 留白。這能解決每一頁的頭尾貼齊問題！ */
                 margin: 25mm 20mm !important; 
             }
             .no-print { display: none !important; }
-            body { background: white !important; margin: 0 !important; }
+            body { background: white !important; margin: 0 !important; padding: 0 !important; }
             
             .sheet-box { 
                 box-shadow: none !important; 
@@ -78,6 +75,7 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 min-height: auto !important;
+                border: none !important;
             }
             
             .exam-header-info {
@@ -85,6 +83,32 @@
                 justify-content: space-between;
                 font-size: 1.1rem; 
                 font-weight: bold;
+                /* 為了防止列印引擎失常，強制在第一頁姓名處再加碼頂部推擠 */
+                padding-top: 10px !important; 
+            }
+
+            /* 將 Grid 切換為 Block/Inline-Block，徹底解決雙欄切頁 Bug */
+            #problemContainer {
+                display: block !important; 
+            }
+            
+            /* 單欄排版：強制佔滿整行 */
+            .problem-grid.single-column .math-problem,
+            .math-problem.full-width {
+                display: block !important;
+                width: 100% !important;
+                clear: both !important;
+                margin-bottom: 35px !important;
+            }
+
+            /* 雙欄 Z 字型排版：左 1 右 2，滿了自動斷行 */
+            .math-problem {
+                display: inline-block !important;
+                width: 48% !important; 
+                vertical-align: top !important;
+                margin-bottom: 35px !important;
+                page-break-inside: avoid !important; /* 絕對不把同一題切成兩半 */
+                break-inside: avoid !important;
             }
 
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -153,7 +177,7 @@
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3 mb-4 no-print gap-2">
                         <div>
-                            <h3 class="fw-bold fs-4 m-0" id="sheetTitle">第 2 章 分數除法綜合練習</h3>
+                            <h3 class="fw-bold fs-4 m-0" id="sheetTitle">第 2 章 分數除法練習</h3>
                             <small class="text-muted" id="scoreSubTitle">（每題 4 分，共 100 分）</small>
                         </div>
                         <div class="btn-group shadow-sm" role="group">
@@ -167,7 +191,6 @@
                         <p class="text-muted small" id="printScoreSubTitle">（每題 4 分，共 100 分）</p>
                     </div>
 
-                    <!-- 改用我們客製化的網格容器，不再依賴 Bootstrap -->
                     <div id="problemContainer" class="problem-grid">
                         <!-- 動態生成題目 -->
                     </div>
@@ -360,7 +383,6 @@
             
             const layoutMode = document.getElementById('layoutMode').value;
             
-            // 處理單雙欄模式切換
             if (layoutMode === '1') {
                 container.classList.add('single-column');
             } else {
@@ -371,12 +393,10 @@
                 const col = document.createElement('div');
                 col.className = 'math-problem';
                 
-                // 若為強制滿版題型 (2.4)，加上專屬 class 撐滿空間
                 if (p.fullWidth) {
                     col.classList.add('full-width');
                 }
                 
-                // 所有題型（包含大小關係）都採用同一套邏輯，將答案附加在最後
                 const displayVal = isAnswerMode 
                     ? `<span class="text-danger fw-bold ms-2 fs-5">${p.answer}</span>` 
                     : `<span class="text-muted ms-2">_________________</span>`;
