@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>六年級數學・無限計算題庫 - 庫口袋</title>
+    <link rel="icon" href="https://suuuuuhaooooo.github.io/-/favicon.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --primary: #8e9775; 
+            --dark: #5b6348; 
+            --bg: #f5f5f5; 
+        }
+        body { 
+            background-color: var(--bg); 
+            font-family: "Noto Serif TC", serif; 
+            color: #333;
+        }
+        
+        .navbar { background: white; padding: 10px 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.05); }
+        .brand-title img { height: 40px; width: auto; object-fit: contain; }
+        
+        .hero { padding: 40px 0 30px; margin-bottom: 20px; }
+        .hero h1 { color: var(--dark); font-weight: 700; letter-spacing: 1.5px; font-size: 1.75rem; }
+        
+        .chapter-card { 
+            border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            border-top: 4px solid var(--primary); transition: transform 0.2s; background: white; 
+        }
+        .chapter-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .chapter-title { color: var(--dark); font-weight: 700; font-size: 1.1rem; }
+        
+        .list-group-item { border: none; padding: 10px 0; color: #555; }
+        .list-group-item-action:hover { background-color: transparent; color: var(--primary); font-weight: bold; }
+        .icon-bullet { color: var(--primary); margin-right: 8px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../index.html" class="text-decoration-none text-muted fw-bold">
+                <i class="fas fa-arrow-left me-1"></i> 返回主頁
+            </a>
+            <a href="../index.html" class="brand-title text-decoration-none">
+                <img src="https://suuuuuhaooooo.github.io/-/CoolPocket.svg" alt="庫口袋 Cool Pocket">
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero text-center">
+        <div class="container">
+            <h1 class="mb-2">國小六年級・數學無限題庫</h1>
+            <p class="text-muted mb-0">依據六上/六下課綱設計，點選單元立即產生 A4 練習卷</p>
+        </div>
+    </div>
+
+    <div class="container mb-5" style="max-width: 1000px;">
+        
+        <!-- 特別推薦：直式計算引擎 -->
+        <div class="card chapter-card mb-4" style="border-top-color: #d4af37;">
+            <div class="card-body p-4">
+                <h2 class="chapter-title mb-3" style="color: #b8860b;"><i class="fas fa-star me-2"></i>跨年段綜合練習</h2>
+                <div class="list-group list-group-flush">
+                    <a href="../tools/math-vertical.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-play icon-bullet" style="color: #b8860b;"></i> <strong>直式計算練習產生器</strong>（涵蓋加減乘除、長除法、小數直式，附實體對齊方格）
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- 第 1 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 1 章：因數與倍數</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="gcd-lcm.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 最大公因數與最小公倍數 (短除法、互質)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 2 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 2 章：分數除法</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="fraction-division.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 最簡分數化簡與分數除法計算
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 3 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 3 章：數量關係</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="quantity-relation.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 數形規律、和差變化與植樹間隔問題
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 4 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 4 章：小數除法</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="decimal-division.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 整數與小數互除、商的四捨五入取概數
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 5 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 5 章：比與比值</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="ratio.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 求比值、最簡單整數比與未知數計算
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 6 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 6 章：圓周長與扇形</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="circle-perimeter.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 圓周長、扇形弧長與複合圖形周長
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 7 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 7 章：圓面積與扇形</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="circle-area.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 圓面積與各種圓心角的扇形面積
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 8 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 8 章：認識速率</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="speed.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 距離/時間計算與全方位速率單位換算
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第 9 章 -->
+            <div class="col-md-6">
+                <div class="card chapter-card h-100 p-4">
+                    <h2 class="chapter-title mb-3"><i class="fas fa-book-open me-2 text-muted"></i>第 9 章：比例尺與縮圖</h2>
+                    <div class="list-group list-group-flush">
+                        <a href="scale.html" class="list-group-item list-group-item-action">
+                            <i class="fas fa-circle icon-bullet"></i> 放大縮圖邊長計算與地圖實際距離換算
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; color: #aaa; margin: 20px 0; letter-spacing: 1px; font-family: Arial, sans-serif;">
+        &copy; 2026 蘇昊數理 Su-Hao Math/Science. All rights reserved.
+    </div>
+
+</body>
+</html>
