@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW" itemscope itemtype="http://schema.org/WebPage">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>因數與倍數練習產生器｜最大公因數、最小公倍數、短除法 - 庫口袋題庫</title>
+    <meta name="description" content="免費國小因數與倍數練習產生器：因數、倍數、最大公因數、最小公倍數、質數與短除法，附答案卷，可列印 A4 或存成 PDF。由蘇昊數理團隊製作。">
+    <meta name="author" content="蘇昊數理">
+    <meta name="copyright" content="© 2026 蘇昊數理. All rights reserved.">
+    <meta name="language" content="zh-TW">
+    
+    <link rel="icon" type="image/png" href="https://suuuuuhaooooo.github.io/-/favicon.png">
+    <meta name="theme-color" content="#198754">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link href="https://zeroegg.tw/css/app.css" rel="stylesheet">
+    <link href="https://zeroegg.tw/css/brand-2026.css?v=1789469047" rel="stylesheet">
+    
+    <style>
+        :root {
+            --zg-c-green: #198754;
+            --zg-c-green-i: #ffffff;
+        }
+        body { background-color: #f8f9fa; font-family: "Noto Sans TC", sans-serif; }
+        .navbar-brand .brand-title { font-weight: 800; color: #333; letter-spacing: 1px; font-size: 1.2rem;}
+        .navbar-brand .brand-sub { font-size: 0.7rem; color: var(--zg-c-green); font-weight: bold; }
+        
+        .zg-bt b { color: #198754 !important; }
+        .text-primary { color: #198754 !important; }
+        .btn-primary { background-color: #198754 !important; border-color: #198754 !important; }
+        .btn-primary:hover { background-color: #146c43 !important; border-color: #146c43 !important; }
+        .btn-outline-primary { color: #198754 !important; border-color: #198754 !important; }
+        .btn-outline-primary:hover { background-color: #198754 !important; color: white !important; }
+
+        .math-related { margin-top: 28px; }
+        .math-related-item { display: block; height: 100%; padding: 15px; border: 1px solid #dee2e6; border-radius: 12px; background: #fff; color: inherit; text-decoration: none; transition: all 0.2s ease; }
+        .math-related-item:hover { border-color: var(--zg-c-green); background: #f7fbf4; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.1); transform: translateY(-2px); }
+        .math-related-item strong { display: block; font-size: 15px; color: #212529; margin-bottom: 5px;}
+        .math-related-item span { display: block; font-size: 13px; color: #6c757d; line-height: 1.45; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="https://suuuuuhaooooo.github.io/">
+                <i class="fas fa-pocket text-success fs-3 me-2"></i>
+                <div class="d-flex flex-column lh-1">
+                    <span class="brand-title">庫口袋</span>
+                    <span class="brand-sub mt-1">COOL POCKET</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto ms-3">
+                    <li class="nav-item"><a class="nav-link fw-medium" href="index.html">中小學題庫首頁</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="grade6/index.html">六年級專區</a></li>
+                </ul>
+                <div class="navbar-nav">
+                    <a class="btn btn-success btn-sm px-4 rounded-pill fw-bold" href="https://suuuuuhaooooo.github.io/" target="_blank">蘇昊數理教學資源</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+        
+    <main>
+        <link rel="stylesheet" href="https://zeroegg.tw/css/math/sheet.css?v=1789473389">
+
+        <div class="ms-root container-fluid py-4" style="max-width: 1400px;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="https://suuuuuhaooooo.github.io/" class="text-success text-decoration-none">首頁</a></li>
+                    <li class="breadcrumb-item"><a href="index.html" class="text-success text-decoration-none">學習工具</a></li>
+                    <li class="breadcrumb-item active">因數與倍數練習產生器</li>
+                </ol>
+            </nav>
+
+            <div class="zg-toolhead" style="margin:10px 0 20px;">
+                <span class="zg-ibadge" style="background:var(--zg-c-green);color:var(--zg-c-green-i)">因</span>
+                <div>
+                    <h1 class="fw-bold fs-3 text-dark mb-2">因數與倍數練習產生器</h1>
+                    <p class="text-muted">因數、倍數、最大公因數、最小公倍數、質數與短除法，附答案卷，一鍵列印 A4。</p>
+                </div>
+            </div>
+
+            <div class="zg-mtip d-md-none no-print" data-bopo-inline>
+                <div class="zg-mtip__row">
+                    <span class="zg-mtip__icon" aria-hidden="true"><i class="fas fa-desktop"></i></span>
+                    <div class="zg-mtip__text">
+                        <strong>列印請用電腦</strong>
+                        <span>手機可以先設定、預覽；用電腦的 Chrome 或 Edge 列印，版面最準。</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ms-layout">
+                <aside class="ms-panel zg-panel no-print shadow-sm border-0" aria-label="出題設定">
+                    <div class="mb-3">
+                        <label for="msTitle" class="form-label fw-bold">練習標題</label>
+                        <input type="text" id="msTitle" class="form-control" maxlength="60" placeholder="因數與倍數練習">
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label fw-bold mb-1">題型 <span class="fw-normal text-muted small">（可複選，會混合出題）</span></div>
+                        <div id="msPresets"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="msCountMode" class="form-label small fw-bold mb-1">題數</label>
+                        <div class="d-flex gap-2">
+                            <select id="msCountMode" class="form-select form-select-sm">
+                                <option value="1">填滿 1 頁</option>
+                                <option value="2">填滿 2 頁</option>
+                                <option value="3">填滿 3 頁</option>
+                                <option value="0">自訂題數</option>
+                            </select>
+                            <div id="msCountBox" class="input-group input-group-sm ms-count-box" hidden>
+                                <input type="number" id="msCount" class="form-control" min="1" max="100" step="1" inputmode="numeric" aria-label="自訂題數">
+                                <span class="input-group-text">題</span>
+                            </div>
+                        </div>
+                        <div id="msCountHint" class="form-text ms-count-hint" aria-live="polite"></div>
+                    </div>
+
+                    <div id="msOptions"></div>
+
+                    <button type="button" id="msShuffle" class="btn btn-outline-success fw-bold w-100 mt-2">
+                        <i class="fas fa-shuffle"></i> 換一批題目
+                    </button>
+                </aside>
+
+                <div class="ms-preview">
+                    <div class="ms-toolbar no-print">
+                        <div class="btn-group btn-group-sm shadow-sm" role="group" aria-label="切換題目卷或答案卷">
+                            <button type="button" id="msTabQ" class="btn btn-outline-success active fw-medium" aria-pressed="true">題目卷</button>
+                            <button type="button" id="msTabA" class="btn btn-outline-success fw-medium" aria-pressed="false">答案卷</button>
+                        </div>
+                        <span id="msInfo" class="ms-info"></span>
+                        <div class="ms-actions">
+                            <button type="button" id="msSave" class="btn btn-sm btn-primary"><i class="fas fa-share-nodes"></i> 儲存分享</button>
+                            <button type="button" id="msPrintQ" class="btn btn-sm btn-success fw-bold"><i class="fas fa-print"></i> 列印題目卷</button>
+                            <button type="button" id="msPrintA" class="btn btn-sm btn-outline-success fw-bold"><i class="fas fa-print"></i> 列印答案卷</button>
+                        </div>
+                    </div>
+
+                    <div id="msShare" class="alert alert-success no-print" hidden>
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>已儲存！</strong>分享連結：
+                            <input type="text" id="msShareUrl" class="form-control form-control-sm ms-share-url" readonly>
+                            <button type="button" id="msCopy" class="btn btn-sm btn-outline-success"><i class="fas fa-copy"></i> 複製</button>
+                        </div>
+                    </div>
+
+                    <div id="msNotice" class="alert alert-warning small no-print" role="status" hidden></div>
+                    <div id="msPages" class="ms-pages" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <nav class="math-related no-print" aria-label="庫口袋其他數學工具">
+                <h2 class="h5 fw-bold mb-3 text-success"><i class="fas fa-layer-group me-2"></i>庫口袋・其他專屬題型產生器</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-exam.html"><strong>綜合數學考卷產生器</strong><span>自訂題型、配分，組合成大題自動算總分</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-vertical.html"><strong>直式計算練習產生器</strong><span>加減乘除、小數直式專項特訓，附方格對齊</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-mental.html"><strong>口算練習產生器</strong><span>加減法、九九乘法、除法口算，一頁數十題</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="grade6/fraction-division.html"><strong>分數除法產生器</strong><span>同分母、異分母分數除法與未知數求解</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="grade6/decimal-division.html"><strong>小數除法練習</strong><span>整數與小數互除、商的取概數練習</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="grade6/ratio.html"><strong>比與比值練習</strong><span>求比值、最簡單整數比與相等比計算</span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container no-print">
+            <section class="faq-section mt-5 mb-4 border-top pt-4">
+                <h2 class="h4 fw-bold mb-3 text-center"><i class="fas fa-question-circle text-success me-2"></i>常見問題</h2>
+                <div class="accordion shadow-sm" id="faqAccordion">
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead0">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody0">
+                                <i class="fas fa-q text-success me-2"></i> 短除法怎麼呈現？
+                            </button>
+                        </h3>
+                        <div id="faqBody0" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 依課本寫法：除數寫在左邊，數字左邊與下方畫線，一直除到商是質數（質因數分解）或兩數互質（求最大公因數/最小公倍數）。答案卷會寫出每一層的計算。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead1">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1">
+                                <i class="fas fa-q text-success me-2"></i> 質數題的範圍是多少？
+                            </button>
+                        </h3>
+                        <div id="faqBody1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 依課綱（N-6-1），只處理 20 以內的質數與合數判斷；質因數分解的數字，使用的質因數也以 2、3、5、7 為主。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script>window.MS_TOOL = "factors"; window.MS_SHARE_ID = null;</script>
+        <script src="https://zeroegg.tw/js/math/sheet-util.js?v=1789542213" defer></script>
+        <script src="https://zeroegg.tw/js/math/tools/factors.js?v=1789542213" defer></script>
+        <script src="https://zeroegg.tw/js/math/sheet-app.js?v=1789542213" defer></script>
+    </main>
+
+    <footer class="mt-5 py-4 bg-white border-top no-print">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5 class="text-success fw-bold">庫口袋 Cool Pocket</h5>
+                    <p class="text-muted mb-0">專屬中小學的無限數學題庫，由蘇昊數理團隊維護設計。</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-unstyled">
+                        <li><a href="https://suuuuuhaooooo.github.io/" class="text-muted text-decoration-none" target="_blank">蘇昊數理教學資源</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center text-muted mb-0 small">&copy; 2026 蘇昊數理. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    (function () {
+        var typing = function (el) {
+            if (!el || !el.tagName) return false;
+            if (el.isContentEditable) return true;
+            if (el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') return true;
+            return el.tagName === 'INPUT' && !/^(checkbox|radio|button|submit|reset|range|color|file|image)$/i.test(el.type || '');
+        };
+        document.addEventListener('focusin', function (e) {
+            if (typing(e.target)) document.body.classList.add('zg-typing');
+        });
+        document.addEventListener('focusout', function () {
+            setTimeout(function () {
+                if (!typing(document.activeElement)) document.body.classList.remove('zg-typing');
+            }, 0);
+        });
+    })();
+    </script>
+</body>
+</html>
