@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW" itemscope itemtype="http://schema.org/WebPage">
+<head>
+    <!-- 基本 Meta 標籤 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO Meta 標籤 -->
+    <title>直式計算練習產生器｜加減乘除、小數直式練習題 - 庫口袋題庫</title>
+    <meta name="description" content="免費國小數學直式計算練習產生器，依課綱出題：直式加減、直式乘法、直式除法與長除法、小數直式，附方格與完整答案卷，可列印 A4 或存成 PDF。由蘇昊數理團隊製作。">
+    <meta name="author" content="蘇昊數理">
+    <meta name="copyright" content="© 2026 蘇昊數理. All rights reserved.">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 保留原直式計算引擎的排版 CSS -->
+    <link href="https://zeroegg.tw/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://zeroegg.tw/css/math/vertical-grid.css?v=1789467921">
+    <link rel="stylesheet" href="https://zeroegg.tw/css/math/vertical.css?v=1789467921">
+
+    <style>
+        /* 庫口袋覆蓋樣式 */
+        :root {
+            --zg-c-green: #198754;
+            --zg-c-green-i: #ffffff;
+        }
+        body { background-color: #f8f9fa; font-family: "Noto Sans TC", sans-serif; }
+        .navbar-brand .brand-title { font-weight: 800; color: #333; letter-spacing: 1px; font-size: 1.2rem;}
+        .navbar-brand .brand-sub { font-size: 0.7rem; color: var(--zg-c-green); font-weight: bold; }
+        
+        .math-related { margin-top: 28px; }
+        .math-related-item { display: block; height: 100%; padding: 15px; border: 1px solid #dee2e6; border-radius: 12px; background: #fff; color: inherit; text-decoration: none; transition: all 0.2s ease; }
+        .math-related-item:hover { border-color: var(--zg-c-green); background: #f7fbf4; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.1); transform: translateY(-2px); }
+        .math-related-item strong { display: block; font-size: 15px; color: #212529; margin-bottom: 5px;}
+        .math-related-item span { display: block; font-size: 13px; color: #6c757d; line-height: 1.45; }
+    </style>
+</head>
+<body>
+    <!-- 頂部導覽列 -->
+    <nav class="navbar sticky-top" style="background: white; padding: 10px 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.05);">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="../tools-index.html" class="text-decoration-none text-muted fw-bold">
+                <i class="fas fa-arrow-left me-1"></i> 返回題庫總覽
+            </a>
+            <a href="../tools-index.html" class="brand-title text-decoration-none">
+                <img src="https://suuuuuhaooooo.github.io/-/CoolPocket.svg" alt="庫口袋 Cool Pocket" style="height: 40px; width: auto; object-fit: contain;">
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="mv-root container-fluid py-4" style="max-width: 1400px;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="https://suuuuuhaooooo.github.io/" class="text-success text-decoration-none">首頁</a></li>
+                    <li class="breadcrumb-item"><a href="index.html" class="text-success text-decoration-none">學習工具</a></li>
+                    <li class="breadcrumb-item active">直式計算練習產生器</li>
+                </ol>
+            </nav>
+
+            <div class="zg-toolhead" style="margin:10px 0 20px;">
+                <span class="zg-ibadge" style="background:var(--zg-c-green);color:var(--zg-c-green-i)"><i class="fas fa-calculator"></i></span>
+                <div>
+                    <h1 class="fw-bold fs-3 text-dark mb-2">直式計算練習產生器</h1>
+                    <p class="text-muted">依課綱出題，加減乘除、小數直式都有方格，附完整答案卷，一鍵列印 A4。</p>
+                </div>
+            </div>
+
+            <!-- 手機版列印提示 -->
+            <div class="zg-mtip d-md-none no-print" data-bopo-inline>
+                <div class="zg-mtip__row">
+                    <span class="zg-mtip__icon" aria-hidden="true"><i class="fas fa-desktop"></i></span>
+                    <div class="zg-mtip__text">
+                        <strong>列印請用電腦</strong>
+                        <span>手機可以先設定、預覽；用電腦的 Chrome 或 Edge 列印，版面最準。</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mv-layout">
+                <!-- 左側設定面板 -->
+                <aside class="mv-panel zg-panel no-print shadow-sm border-0" aria-label="出題設定">
+                    <div class="mb-3">
+                        <label for="mvTitle" class="form-label fw-bold">練習標題</label>
+                        <input type="text" id="mvTitle" class="form-control" maxlength="60" placeholder="直式計算練習">
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label fw-bold mb-1">題型 <span class="fw-normal text-muted small">（可複選，會混合出題）</span></div>
+                        <div id="mvPresets" class="mv-presets"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mvCountMode" class="form-label small fw-bold mb-1">題數</label>
+                        <div class="d-flex gap-2">
+                            <select id="mvCountMode" class="form-select form-select-sm">
+                                <option value="1">填滿 1 頁</option>
+                                <option value="2">填滿 2 頁</option>
+                                <option value="3">填滿 3 頁</option>
+                                <option value="0">自訂題數</option>
+                            </select>
+                            <div id="mvCountBox" class="input-group input-group-sm mv-count-box" hidden>
+                                <input type="number" id="mvCount" class="form-control" min="1" max="100" step="1" inputmode="numeric" aria-label="自訂題數">
+                                <span class="input-group-text">題</span>
+                            </div>
+                        </div>
+                        <div id="mvCountHint" class="form-text mv-count-hint" aria-live="polite"></div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label for="mvSize" class="form-label small fw-bold mb-1">格子大小</label>
+                            <select id="mvSize" class="form-select form-select-sm">
+                                <option value="auto">依年級自動</option>
+                                <option value="l">大（10 mm）</option>
+                                <option value="m">中（8.5 mm）</option>
+                                <option value="s">小（7 mm）</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="mvExtra" class="form-label small fw-bold mb-1">計算空間</label>
+                            <select id="mvExtra" class="form-select form-select-sm" title="每題下方多留的空白列">
+                                <option value="0">剛好</option>
+                                <option value="1">多 1 列</option>
+                                <option value="2">多 2 列</option>
+                                <option value="3">多 3 列</option>
+                                <option value="4">多 4 列</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" id="mvCarryRow">
+                        <label for="mvCarry" class="form-label small fw-bold mb-1">加減法的進位、退位</label>
+                        <select id="mvCarry" class="form-select form-select-sm">
+                            <option value="any">不限</option>
+                            <option value="need">至少進（退）位一次</option>
+                            <option value="multi">兩次以上（連續進退位）</option>
+                            <option value="none">不進（退）位</option>
+                        </select>
+                        <div id="mvCarryHint" class="form-text"></div>
+                    </div>
+
+                    <div class="mb-3" id="mvRemRow">
+                        <label for="mvRemainder" class="form-label small fw-bold mb-1">整數除法</label>
+                        <select id="mvRemainder" class="form-select form-select-sm">
+                            <option value="mixed">整除、有餘數都有</option>
+                            <option value="exact">只出整除</option>
+                            <option value="remainder">只出有餘數</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-label small fw-bold mb-1">題目呈現</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mvMode" id="mvModeFilled" value="filled" checked>
+                            <label class="form-check-label" for="mvModeFilled">直式已列好（專心練計算）</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mvMode" id="mvModeSelf" value="self">
+                            <label class="form-check-label" for="mvModeSelf">自己列直式（只給橫式和空白方格）</label>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" role="switch" id="mvGrid" checked>
+                        <label class="form-check-label" for="mvGrid">顯示方格（幫助對齊位值）</label>
+                    </div>
+
+                    <button type="button" id="mvShuffle" class="btn btn-outline-success fw-bold w-100">
+                        <i class="fas fa-shuffle"></i> 換一批題目
+                    </button>
+                </aside>
+
+                <!-- 右側預覽區 -->
+                <div class="mv-preview">
+                    <div class="mv-toolbar no-print">
+                        <div class="btn-group btn-group-sm shadow-sm" role="group" aria-label="切換題目卷或答案卷">
+                            <button type="button" id="mvTabQ" class="btn btn-outline-success active fw-medium" aria-pressed="true">題目卷</button>
+                            <button type="button" id="mvTabA" class="btn btn-outline-success fw-medium" aria-pressed="false">答案卷</button>
+                        </div>
+                        <span id="mvInfo" class="mv-info"></span>
+                        <div class="mv-actions">
+                            <button type="button" id="mvPrintQ" class="btn btn-sm btn-success fw-bold"><i class="fas fa-print"></i> 列印題目卷</button>
+                            <button type="button" id="mvPrintA" class="btn btn-sm btn-outline-success fw-bold"><i class="fas fa-print"></i> 列印答案卷</button>
+                        </div>
+                    </div>
+
+                    <div id="mvNotice" class="alert alert-warning small no-print" role="status" hidden></div>
+
+                    <div id="mvPages" class="mv-pages" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <nav class="math-related no-print" aria-label="庫口袋其他數學工具">
+                <h2 class="h5 fw-bold mb-3 text-success"><i class="fas fa-layer-group me-2"></i>庫口袋・跨年段題型產生器</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-exam.html"><strong>綜合數學考卷產生器</strong><span>自訂題型、配分，組合成大題自動算總分</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-vertical.html"><strong>直式計算練習產生器</strong><span>加減乘除、小數直式專項特訓，附方格對齊</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-mental.html"><strong>口算練習產生器</strong><span>加減法、九九乘法、除法口算，一頁數十題</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-times-table.html"><strong>九九乘法表產生器</strong><span>九九乘法表、縱橫表填空與亂序練習單</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-clock.html"><strong>時鐘與時間練習產生器</strong><span>看鐘面、畫指針、經過時間計算與 24 小時制</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-money.html"><strong>錢幣與購物練習產生器</strong><span>數錢、換錢、找錢，用最少張數付錢的生活應用題</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-place.html"><strong>位值、大數與數線產生器</strong><span>位值表、到兆的大數互換、小數位值與數線報讀</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-units.html"><strong>單位換算練習產生器</strong><span>長度、容量、重量、面積、體積等複名數換算</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-mixed.html"><strong>四則混合運算產生器</strong><span>先乘除後加減、括號先算、分配律與簡便計算</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-rounding.html"><strong>概數練習產生器</strong><span>四捨五入、無條件進入/捨去，與除不盡的商取概數</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-fraction.html"><strong>分數練習產生器</strong><span>約分通分、等值分數、帶分數與分數的四則運算</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-factors.html"><strong>因數與倍數產生器</strong><span>最大公因數、最小公倍數、質數判斷與短除法</span></a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="math-related-item" href="math-geometry.html"><strong>幾何練習產生器</strong><span>量角器、內角和、圖形面積、扇形面積與柱體體積</span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- FAQ 常見問題 -->
+        <div class="container no-print">
+            <section class="faq-section mt-5 mb-4 border-top pt-4">
+                <h2 class="h4 fw-bold mb-3 text-center"><i class="fas fa-question-circle text-success me-2"></i>常見問題</h2>
+                <div class="accordion shadow-sm" id="faqAccordion">
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead0">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody0">
+                                <i class="fas fa-q text-success me-2"></i> 直式計算練習產生器可以免費使用嗎？
+                            </button>
+                        </h3>
+                        <div id="faqBody0" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 完全免費！勾選題型就會自動出題，題目卷和答案卷都能直接列印 A4。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead2">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody2">
+                                <i class="fas fa-q text-success me-2"></i> 「直式已列好」和「自己列直式」有什麼不同？
+                            </button>
+                        </h3>
+                        <div id="faqBody2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 「直式已列好」會把題目寫在方格裡，讓學生專心練計算；「自己列直式」只給橫式和空白方格，讓學生練習把位值、小數點對齊。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead3">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody3">
+                                <i class="fas fa-q text-success me-2"></i> 答案卷有什麼內容？
+                            </button>
+                        </h3>
+                        <div id="faqBody3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 答案卷有完整的直式算式：乘法會列出部分積，除法會列出每一步，紅字是要算出來的部分，方便老師和家長批改。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="faqHead4">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody4">
+                                <i class="fas fa-q text-success me-2"></i> 小數乘法的直式為什麼不對齊小數點？
+                            </button>
+                        </h3>
+                        <div id="faqBody4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-white text-secondary">
+                                <i class="fas fa-a text-danger me-2"></i> 依據教材約定：乘法直式「被乘數和乘數必須往右對齊」，不像加減法要對齊小數點；先照整數乘法算，再依兩數的小數位數點上積的小數點。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 保留直式計算核心引擎 JS (不可刪除) -->
+        <script>window.MV_SHARE_ID = null;</script>
+        <script src="https://zeroegg.tw/js/math/vertical-core.js?v=1789542213" defer></script>
+        <script src="https://zeroegg.tw/js/math/vertical-render.js?v=1789542213" defer></script>
+        <script src="https://zeroegg.tw/js/math/vertical-app.js?v=1789467921" defer></script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top mt-5 py-4 no-print">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold text-success mb-1">庫口袋 Cool Pocket</h5>
+                    <p class="text-muted small mb-0">中小學的無限數學題庫，由蘇昊數理團隊維護設計。</p>
+                </div>
+                <div class="col-md-6 text-md-end text-muted small">
+                    <ul class="list-inline mb-1">
+                        <li class="list-inline-item"><a href="https://suuuuuhaooooo.github.io/-/" class="text-muted text-decoration-none">蘇昊數理官網</a></li>
+                    </ul>
+                    &copy; 2026 蘇昊數理. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
