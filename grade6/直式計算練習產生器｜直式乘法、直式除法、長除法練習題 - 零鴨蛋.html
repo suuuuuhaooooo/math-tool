@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-TW" itemscope itemtype="http://schema.org/WebPage">
+<head>
+    <!-- Google tag (gtag.js) - 進階追蹤設定 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PCEBLDXFQ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // 進階設定
+      gtag('config', 'G-PCEBLDXFQ4', {
+        // 增強型測量
+        'send_page_view': true,
+        'page_title': '直式計算練習產生器｜直式乘法、直式除法、長除法練習題',
+        'page_location': window.location.href,
+        'page_path': window.location.pathname,
+        
+        // 使用者資料
+        'user_properties': {
+          'visitor_type': localStorage.getItem('returning_visitor') ? 'returning' : 'new'
+        },
+        
+        // 自訂維度
+        'custom_map.dimension1': 'page_category',
+        'custom_map.dimension2': 'user_role',
+        
+        // 偵錯模式 (生產環境請設為 false)
+        'debug_mode': false,
+        
+        // Cookie 設定
+        'cookie_domain': 'zeroegg.tw',
+        'cookie_expires': 63072000, // 2 年
+        'cookie_prefix': 'zeroegg',
+        'cookie_update': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        
+        // 隱私設定
+        'anonymize_ip': true,
+        'allow_google_signals': true,
+        'allow_ad_personalization_signals': false,
+        
+        // 效能最佳化
+        'transport_type': 'beacon',
+        'page_referrer': document.referrer
+      });
+      
+      // 設定回訪者標記
+      if (!localStorage.getItem('returning_visitor')) {
+        localStorage.setItem('returning_visitor', 'true');
+      }
+      
+      // 追蹤 Web Vitals
+      gtag('event', 'page_view', {
+        'page_category': 'general',
+        'page_type': 'content'
+      });
+    </script>
+    
+    <!-- 基本 Meta 標籤 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO Meta 標籤 -->
+    <title>直式計算練習產生器｜直式乘法、直式除法、長除法練習題 - 零鴨蛋</title>
+    <meta name="description" content="免費國小數學直式計算練習產生器，依 108 課綱二到六年級出題：直式加減（進位、退位）、直式乘法、直式除法與長除法、小數直式，附方格與完整答案卷，可列印 A4 或存成 PDF。">
+    <meta name="keywords" content="零鴨蛋,ZeroEgg,線上學習,小學生學習,國字練習,注音符號,筆順練習,數學練習題,英文學習,字帖生成器,台灣教育,108課綱,免費教材,兒童教育,直式計算,直式計算練習,直式練習,直式加法,直式減法,直式乘法,直式除法,長除法,小數直式,小數乘法,小數除法,進位,退位,數學學習單,數學練習單,國小數學,計算題產生器,數學題目產生器,答案卷,直式乘法練習題,直式乘法產生器,直式除法練習,直式除法題目,直式除法學習單,直式除法產生器,長除法練習,長除法題目,數學直式練習,直式計算練習題,直式 pdf">
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="ZeroEgg Team">
+    <meta name="generator" content="ZeroEgg Platform v1.0">
+    <meta name="copyright" content="© 2026 ZeroEgg. All rights reserved.">
+    <meta name="language" content="zh-TW">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://zeroegg.tw/tools/math-vertical">
+    <link rel="alternate" hreflang="zh-TW" href="https://zeroegg.tw/tools/math-vertical">
+    <link rel="alternate" hreflang="x-default" href="https://zeroegg.tw/tools/math-vertical">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeroegg.tw/tools/math-vertical">
+    <meta property="og:title" content="直式計算練習產生器｜直式乘法、直式除法、長除法練習題 - 零鴨蛋">
+    <meta property="og:description" content="免費國小數學直式計算練習產生器，依 108 課綱二到六年級出題：直式加減（進位、退位）、直式乘法、直式除法與長除法、小數直式，附方格與完整答案卷，可列印 A4 或存成 PDF。">
+    <meta property="og:image" content="https://zeroegg.tw/images/og/math-vertical-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="直式計算練習產生器：直式方格與完整答案卷範例">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="零鴨蛋 ZeroEgg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zeroegg.tw/tools/math-vertical">
+    <meta name="twitter:title" content="直式計算練習產生器｜直式乘法、直式除法、長除法練習題 - 零鴨蛋">
+    <meta name="twitter:description" content="免費國小數學直式計算練習產生器，依 108 課綱二到六年級出題：直式加減（進位、退位）、直式乘法、直式除法與長除法、小數直式，附方格與完整答案卷，可列印 A4 或存成 PDF。">
+    <meta name="twitter:image" content="https://zeroegg.tw/images/og/math-vertical-og.png">
+    <meta name="twitter:image:alt" content="直式計算練習產生器：直式方格與完整答案卷範例">
+    <meta name="twitter:site" content="@zeroegg_tw">
+    <meta name="twitter:creator" content="@zeroegg_tw">
+    
+    <!-- Favicon 和 PWA -->
+    <link rel="icon" type="image/png" href="/images/brand/duck-icon.png">
+    <link rel="apple-touch-icon" href="/images/brand/duck-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#f7941d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ZeroEgg">
+    <!-- iPhone Safari 原生的 App 下載橫幅（Smart App Banner）：蘋果的標準做法，不遮內容，已安裝會顯示「打開」 -->
+    <meta name="apple-itunes-app" content="app-id=6763559099">
+    
+    <!-- 預載和預連接優化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://zeroegg.tw/css/app.css" rel="stylesheet">
+        <link href="https://zeroegg.tw/css/bopowrite-promo.css?v=1789467921" rel="stylesheet">
+        <link href="https://zeroegg.tw/css/brand-2026.css?v=1789469047" rel="stylesheet">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="24cfd15861320ec261e5c8c917c3a96af9a98c32b9c125b956a6f6afc819118b">
+</head>
+<body class="zg-has-tabbar">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/brand/duck-icon.png" alt="零鴨蛋 ZeroEgg">
+                <span class="zg-bt"><b>零鴨蛋</b><small>ZEROEGG</small></span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/tools">學習工具</a>
+                    </li>
+                    <!-- 手機選單：常用分類直接點（桌機不顯示） -->
+                    <li class="nav-item zg-nav-cats-item d-lg-none">
+                        <div class="zg-nav-cats">
+                            <a href="/tools/chinese"><span class="zg-ibadge" style="background:var(--zg-c-orange);color:var(--zg-c-orange-i)">字</span>國字注音</a>
+                            <a href="/tools/math"><span class="zg-ibadge" style="background:var(--zg-c-green);color:var(--zg-c-green-i)">＋</span>數學</a>
+                            <a href="/tools/english"><span class="zg-ibadge" style="background:var(--zg-c-blue);color:var(--zg-c-blue-i)">Aa</span>英文</a>
+                            <a href="/tools/exam"><span class="zg-ibadge" style="background:var(--zg-c-purple);color:var(--zg-c-purple-i)">卷</span>考卷</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">關於我們</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <button type="button" class="nav-link zg-nav-app" data-bopo-open-modal data-bopo-source="menu">
+                            <span class="zg-nav-app__icon" aria-hidden="true">ㄅ</span>
+                            <span>下載零鴨蛋 App<small>注音・筆順・數學・英文，免費</small></span>
+                        </button>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav zg-nav-auth">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/auth/login">登入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-sm" href="/auth/register">免費註冊</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+        
+        
+    <!-- Main Content -->
+    <main>
+        <link rel="stylesheet" href="https://zeroegg.tw/css/math/vertical-grid.css?v=1789467921">
+<link rel="stylesheet" href="https://zeroegg.tw/css/math/vertical.css?v=1789467921">
+
+<div class="mv-root container-fluid py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">首頁</a></li>
+            <li class="breadcrumb-item"><a href="/tools">學習工具</a></li>
+            <li class="breadcrumb-item"><a href="/tools/math">數學相關</a></li>
+            <li class="breadcrumb-item active">直式計算練習產生器</li>
+        </ol>
+    </nav>
+
+    <div class="zg-toolhead" style="margin:10px 0 20px;">
+        <span class="zg-ibadge" style="background:var(--zg-c-green);color:var(--zg-c-green-i)">直</span>
+        <div>
+            <h1>直式計算練習產生器</h1>
+            <p>依 108 課綱出題，加減乘除、小數直式都有方格，附完整答案卷，一鍵列印 A4。</p>
+        </div>
+    </div>
+
+    <div class="zg-mtip d-md-none no-print" data-bopo-inline>
+    <div class="zg-mtip__row">
+        <span class="zg-mtip__icon" aria-hidden="true"><i class="fas fa-desktop"></i></span>
+        <div class="zg-mtip__text">
+            <strong>列印請用電腦</strong>
+            <span>手機可以先設定、預覽；用電腦的 Chrome 或 Edge 列印，版面最準。</span>
+        </div>
+        <button type="button" class="zg-mtip__btn" data-zg-share><i class="fas fa-share-from-square" aria-hidden="true"></i> 傳到電腦</button>
+    </div>
+</div>
+<script>
+(function () {
+    if (window.__zgShareBound) return;
+    window.__zgShareBound = true;
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('[data-zg-share]');
+        if (!btn) return;
+        var saved = document.querySelector('#msShareUrl, #meShareUrl, #mvShareUrl');
+        var url = saved && saved.value && !saved.closest('[hidden]') ? saved.value : location.origin + location.pathname;
+        var label = btn.innerHTML;
+        var copied = function () {
+            btn.textContent = '已複製連結';
+            setTimeout(function () { btn.innerHTML = label; }, 2200);
+        };
+        var ask = function () { window.prompt('複製這個連結，傳到電腦打開：', url); };
+        if (navigator.share) {
+            navigator.share({ title: document.title, text: '在電腦打開這個連結就能列印', url: url }).catch(function () {});
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(copied, ask);
+        } else {
+            ask();
+        }
+    });
+})();
+</script>
+
+    <div class="mv-layout">
+        <!-- 設定 -->
+        <aside class="mv-panel zg-panel no-print" aria-label="出題設定">
+            <div class="mb-3">
+                <label for="mvTitle" class="form-label fw-bold">練習標題</label>
+                <input type="text" id="mvTitle" class="form-control" maxlength="60" placeholder="直式計算練習">
+            </div>
+
+            <div class="mb-3">
+                <div class="form-label fw-bold mb-1">題型 <span class="fw-normal text-muted small">（可複選，會混合出題）</span></div>
+                <div id="mvPresets" class="mv-presets"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="mvCountMode" class="form-label small fw-bold mb-1">題數</label>
+                <div class="d-flex gap-2">
+                    <select id="mvCountMode" class="form-select form-select-sm">
+                        <option value="1">填滿 1 頁</option>
+                        <option value="2">填滿 2 頁</option>
+                        <option value="3">填滿 3 頁</option>
+                        <option value="0">自訂題數</option>
+                    </select>
+                    <div id="mvCountBox" class="input-group input-group-sm mv-count-box" hidden>
+                        <input type="number" id="mvCount" class="form-control" min="1" max="100" step="1" inputmode="numeric" aria-label="自訂題數">
+                        <span class="input-group-text">題</span>
+                    </div>
+                </div>
+                <div id="mvCountHint" class="form-text mv-count-hint" aria-live="polite"></div>
+            </div>
+
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <label for="mvSize" class="form-label small fw-bold mb-1">格子大小</label>
+                    <select id="mvSize" class="form-select form-select-sm">
+                        <option value="auto">依年級自動</option>
+                        <option value="l">大（10 mm）</option>
+                        <option value="m">中（8.5 mm）</option>
+                        <option value="s">小（7 mm）</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label for="mvExtra" class="form-label small fw-bold mb-1">計算空間</label>
+                    <select id="mvExtra" class="form-select form-select-sm" title="每題下方多留的空白列">
+                        <option value="0">剛好</option>
+                        <option value="1">多 1 列</option>
+                        <option value="2">多 2 列</option>
+                        <option value="3">多 3 列</option>
+                        <option value="4">多 4 列</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3" id="mvCarryRow">
+                <label for="mvCarry" class="form-label small fw-bold mb-1">加減法的進位、退位</label>
+                <select id="mvCarry" class="form-select form-select-sm">
+                    <option value="any">不限</option>
+                    <option value="need">至少進（退）位一次</option>
+                    <option value="multi">兩次以上（連續進退位）</option>
+                    <option value="none">不進（退）位</option>
+                </select>
+                <div id="mvCarryHint" class="form-text"></div>
+            </div>
+
+            <div class="mb-3" id="mvRemRow">
+                <label for="mvRemainder" class="form-label small fw-bold mb-1">整數除法</label>
+                <select id="mvRemainder" class="form-select form-select-sm">
+                    <option value="mixed">整除、有餘數都有</option>
+                    <option value="exact">只出整除</option>
+                    <option value="remainder">只出有餘數</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-label small fw-bold mb-1">題目呈現</div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mvMode" id="mvModeFilled" value="filled" checked>
+                    <label class="form-check-label" for="mvModeFilled">直式已列好（專心練計算）</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mvMode" id="mvModeSelf" value="self">
+                    <label class="form-check-label" for="mvModeSelf">自己列直式（只給橫式和空白方格）</label>
+                </div>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="mvGrid" checked>
+                <label class="form-check-label" for="mvGrid">顯示方格（幫助對齊位值）</label>
+            </div>
+
+            <button type="button" id="mvShuffle" class="btn btn-outline-primary w-100">
+                <i class="fas fa-shuffle"></i> 換一批題目
+            </button>
+        </aside>
+
+        <!-- 預覽 -->
+        <div class="mv-preview">
+            <div class="mv-toolbar no-print">
+                <div class="btn-group btn-group-sm" role="group" aria-label="切換題目卷或答案卷">
+                    <button type="button" id="mvTabQ" class="btn btn-outline-secondary active" aria-pressed="true">題目卷</button>
+                    <button type="button" id="mvTabA" class="btn btn-outline-secondary" aria-pressed="false">答案卷</button>
+                </div>
+                <span id="mvInfo" class="mv-info"></span>
+                <div class="mv-actions">
+                    <button type="button" id="mvSave" class="btn btn-sm btn-primary"><i class="fas fa-share-nodes"></i> 儲存分享</button>
+                    <button type="button" id="mvPrintQ" class="btn btn-sm btn-success"><i class="fas fa-print"></i> 列印題目卷</button>
+                    <button type="button" id="mvPrintA" class="btn btn-sm btn-outline-success"><i class="fas fa-print"></i> 列印答案卷</button>
+                </div>
+            </div>
+
+            <!-- d-flex 放在內層：Bootstrap 的 .d-flex 是 !important，放外層會蓋掉 hidden -->
+            <div id="mvShare" class="alert alert-success no-print" hidden>
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>已儲存！</strong>分享連結：
+                    <input type="text" id="mvShareUrl" class="form-control form-control-sm mv-share-url" readonly>
+                    <button type="button" id="mvCopy" class="btn btn-sm btn-outline-success"><i class="fas fa-copy"></i> 複製</button>
+                </div>
+            </div>
+
+            <div id="mvNotice" class="alert alert-warning small no-print" role="status" hidden></div>
+
+            <div id="mvPages" class="mv-pages" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <style>
+    .math-related { margin-top: 28px; }
+    .math-related-item { display: block; height: 100%; padding: 10px 14px; border: 1px solid #e3dccf; border-radius: 12px; background: #fff; color: inherit; text-decoration: none; }
+    .math-related-item:hover { border-color: var(--zg-c-green, #4f8f34); background: #f7fbf4; }
+    .math-related-item strong { display: block; font-size: 15px; }
+    .math-related-item span { display: block; font-size: 13px; color: var(--zg-muted, #7a6f63); line-height: 1.45; margin-top: 2px; }
+</style>
+<nav class="math-related no-print" aria-label="其他數學工具">
+    <h2 class="h5 fw-bold mb-3">其他數學工具</h2>
+    <div class="row g-2">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-exam"><strong>數學考卷產生器</strong><span>組合各種題型成考卷：大題、配分、總分與答案卷，一到六年級一鍵範本</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-times-table"><strong>九九乘法表產生器</strong><span>九九乘法表、縱橫表填空、依段填寫、亂序練習（二、三年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-mental"><strong>口算練習產生器</strong><span>基本加減、九九乘法、除法口算，可計時練習</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-mixed"><strong>四則混合運算產生器</strong><span>先乘除後加減、括號、三步驟併式、分配律，答案附逐步算式</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-rounding"><strong>概數練習產生器</strong><span>估算與檢驗、四捨五入、無條件進入與捨去、小數取概數（二到五年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-units"><strong>單位換算練習產生器</strong><span>長度、容量、重量、時間、面積、體積換算（二到五年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-factors"><strong>因數與倍數練習產生器</strong><span>因數、倍數、最大公因數、最小公倍數、質因數分解（短除法）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-fraction"><strong>分數練習產生器</strong><span>塗色認識分數、比大小、約分通分、分數加減乘除（二到六年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-clock"><strong>時鐘與時間練習產生器</strong><span>看鐘面報讀、畫指針、經過多久、24 時制、看月曆（一到四年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-money"><strong>錢幣練習產生器</strong><span>數錢、換錢、找錢、用最少張數付錢（一、二年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-place"><strong>位值與數線練習產生器</strong><span>位值、大數讀寫（到兆）、小數位值與比大小、數線（一到五年級）</span></a>
+            </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                <a class="math-related-item" href="/tools/math-geometry"><strong>幾何練習產生器</strong><span>數方格、量角畫角、圖形分類、內角和、面積、扇形、體積與柱體（三到六年級）</span></a>
+            </div>
+            </div>
+    <p class="mt-3 mb-0 small"><a href="/tools/math">看全部數學工具 →</a></p>
+</nav>
+
+    <div class="text-center mt-4 pt-3 border-top no-print">
+        <a href="https://www.facebook.com/groups/1985888058625810" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
+            <i class="fab fa-facebook"></i> 工具許願 / QA 問題
+        </a>
+        <p class="text-muted small mt-2 mb-0">有任何建議或問題歡迎到社團討論</p>
+    </div>
+</div>
+
+
+<!-- FAQ 常見問題 -->
+<div class="container">
+<section class="faq-section mt-5 mb-4">
+    <h2 class="h4 fw-bold mb-3"><i class="fas fa-question-circle text-primary me-2"></i>常見問題</h2>
+    <div class="accordion" id="faqAccordion">
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead0">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody0"
+                        aria-expanded="false" aria-controls="faqBody0">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    直式計算練習產生器可以免費使用嗎？                </button>
+            </h3>
+            <div id="faqBody0" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead0" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    完全免費！勾選題型就會自動出題，題目卷和答案卷都能直接列印 A4。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead1">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody1"
+                        aria-expanded="false" aria-controls="faqBody1">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    題型是依據什麼設計的？                </button>
+            </h3>
+            <div id="faqBody1" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    依 108 課綱數學領域的學習內容：二年級加減直式（N-2-2）、三年級四位數加減與乘除以一位數（N-3-2、N-3-3、N-3-5）、一位小數（N-3-10）、四年級多位數乘除與二位小數（N-4-2、N-4-7）、五年級小數乘除（N-5-8、N-5-9）、六年級除數是小數的除法（N-6-4）。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead2">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody2"
+                        aria-expanded="false" aria-controls="faqBody2">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    「直式已列好」和「自己列直式」有什麼不同？                </button>
+            </h3>
+            <div id="faqBody2" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    「直式已列好」會把題目寫在方格裡，讓孩子專心練計算；「自己列直式」只給橫式和空白方格，讓孩子練習把位值、小數點對齊，這是很多孩子算錯的原因。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead3">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody3"
+                        aria-expanded="false" aria-controls="faqBody3">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    答案卷有什麼內容？                </button>
+            </h3>
+            <div id="faqBody3" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    答案卷有完整的直式算式：乘法會列出部分積，除法會列出每一步，紅字是要算出來的部分，方便老師和家長批改。切換到「答案卷」或按「列印答案卷」即可。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead4">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody4"
+                        aria-expanded="false" aria-controls="faqBody4">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    小數乘法的直式為什麼不對齊小數點？                </button>
+            </h3>
+            <div id="faqBody4" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    依教育部國家教育研究院《數學領域課程手冊》：乘法直式的約定是「被乘數和乘數必須往右對齊」，不像加減法要對齊小數點；先照整數乘法算，再依兩數的小數位數和點上積的小數點。積末尾的 0 要劃掉，例如 0.4 × 5 在直式裡算出 2.0，要把 0 和小數點劃掉，答案寫 2。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead5">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody5"
+                        aria-expanded="false" aria-controls="faqBody5">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    除法有餘數怎麼寫？                </button>
+            </h3>
+            <div id="faqBody5" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead5" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    依課本寫法「商…餘數」，例如 95 ÷ 4 ＝ 23…3。除數是小數時，答案卷會註明除數和被除數同乘 10 或 100 後的算式。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead6">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody6"
+                        aria-expanded="false" aria-controls="faqBody6">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    可以分享給學生或其他老師嗎？                </button>
+            </h3>
+            <div id="faqBody6" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead6" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    可以。按「儲存分享」會產生連結，打開就是同一份題目與答案，也可以再換題目重新列印。                </div>
+            </div>
+        </div>
+                <div class="accordion-item border mb-2 rounded overflow-hidden">
+            <h3 class="accordion-header" id="faqHead7">
+                <button class="accordion-button collapsed fw-bold" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqBody7"
+                        aria-expanded="false" aria-controls="faqBody7">
+                    <i class="fas fa-q text-primary me-2"></i>
+                    可以存成 PDF 或下載嗎？                </button>
+            </h3>
+            <div id="faqBody7" class="accordion-collapse collapse"
+                 aria-labelledby="faqHead7" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-secondary">
+                    <i class="fas fa-a text-success me-2"></i>
+                    可以。按「列印題目卷」或「列印答案卷」，在列印視窗的「目的地」選「另存為 PDF」，就能存成 PDF 檔保存或傳給學生；也可以按「儲存分享」產生連結。                </div>
+            </div>
+        </div>
+            </div>
+</section>
+</div>
+
+<!-- FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "直式計算練習產生器可以免費使用嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "完全免費！勾選題型就會自動出題，題目卷和答案卷都能直接列印 A4。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "題型是依據什麼設計的？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "依 108 課綱數學領域的學習內容：二年級加減直式（N-2-2）、三年級四位數加減與乘除以一位數（N-3-2、N-3-3、N-3-5）、一位小數（N-3-10）、四年級多位數乘除與二位小數（N-4-2、N-4-7）、五年級小數乘除（N-5-8、N-5-9）、六年級除數是小數的除法（N-6-4）。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "「直式已列好」和「自己列直式」有什麼不同？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "「直式已列好」會把題目寫在方格裡，讓孩子專心練計算；「自己列直式」只給橫式和空白方格，讓孩子練習把位值、小數點對齊，這是很多孩子算錯的原因。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "答案卷有什麼內容？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "答案卷有完整的直式算式：乘法會列出部分積，除法會列出每一步，紅字是要算出來的部分，方便老師和家長批改。切換到「答案卷」或按「列印答案卷」即可。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "小數乘法的直式為什麼不對齊小數點？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "依教育部國家教育研究院《數學領域課程手冊》：乘法直式的約定是「被乘數和乘數必須往右對齊」，不像加減法要對齊小數點；先照整數乘法算，再依兩數的小數位數和點上積的小數點。積末尾的 0 要劃掉，例如 0.4 × 5 在直式裡算出 2.0，要把 0 和小數點劃掉，答案寫 2。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "除法有餘數怎麼寫？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "依課本寫法「商…餘數」，例如 95 ÷ 4 ＝ 23…3。除數是小數時，答案卷會註明除數和被除數同乘 10 或 100 後的算式。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "可以分享給學生或其他老師嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "可以。按「儲存分享」會產生連結，打開就是同一份題目與答案，也可以再換題目重新列印。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "可以存成 PDF 或下載嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "可以。按「列印題目卷」或「列印答案卷」，在列印視窗的「目的地」選「另存為 PDF」，就能存成 PDF 檔保存或傳給學生；也可以按「儲存分享」產生連結。"
+            }
+        }
+    ]
+}</script>
+
+<script>window.MV_SHARE_ID = null;</script>
+<script src="https://zeroegg.tw/js/math/vertical-core.js?v=1789542213" defer></script>
+<script src="https://zeroegg.tw/js/math/vertical-render.js?v=1789542213" defer></script>
+<script src="https://zeroegg.tw/js/math/vertical-app.js?v=1789467921" defer></script>
+    </main>
+
+    <!-- BopoWrite App 下載提示 -->
+    <!-- 零鴨蛋 App 下載提示（手機優先） -->
+<div id="bopo-promo" class="bopo-promo" role="complementary" aria-label="零鴨蛋 App 下載提示" hidden>
+    <button type="button" class="bopo-promo__close" aria-label="關閉提示" data-bopo-close>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+    </button>
+
+    <div class="bopo-promo__inner" role="button" tabindex="0" data-bopo-open aria-label="開啟 App 詳情">
+        <div class="bopo-promo__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="56" height="56">
+                <defs>
+                    <linearGradient id="bopoIconBg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#FFD86B"/>
+                        <stop offset="100%" stop-color="#FFB327"/>
+                    </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bopoIconBg)"/>
+                <text x="32" y="44" text-anchor="middle" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="34" font-weight="900" fill="#FF6B1A">ㄅ</text>
+            </svg>
+        </div>
+
+        <div class="bopo-promo__text">
+            <!-- 手機只顯示一行標題＋一行說明（__wide 的部分只在桌機顯示） -->
+            <div class="bopo-promo__title">
+                <span>零鴨蛋 App<span class="bopo-promo__wide">・四科一個包</span></span>
+            </div>
+            <div class="bopo-promo__sub">
+                <strong class="bopo-promo__sub-hl">免費</strong> 注音・筆順・數學・英文<span class="bopo-promo__wide">・離線可用</span>
+            </div>
+        </div>
+
+        <div class="bopo-promo__cta-wrap">
+            <span class="bopo-promo__cta">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" class="bopo-promo__cta-icon">
+                    <path fill="currentColor" d="M17.52 13.4c-.02-2.07 1.68-3.06 1.76-3.11-.96-1.4-2.46-1.59-2.99-1.61-1.27-.13-2.49.75-3.13.75-.65 0-1.65-.73-2.71-.71-1.39.02-2.68.81-3.4 2.05-1.45 2.52-.37 6.24 1.04 8.28.69 1 1.51 2.12 2.58 2.08 1.04-.04 1.43-.67 2.69-.67 1.26 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2.02.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.34zM15.43 7.46c.57-.69.95-1.65.85-2.6-.82.03-1.81.54-2.4 1.23-.53.61-.99 1.58-.87 2.52.91.07 1.85-.46 2.42-1.15z"/>
+                </svg>
+                免費下載
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- 詳細 Modal -->
+<div id="bopo-modal" class="bopo-modal" role="dialog" aria-modal="true" aria-labelledby="bopo-modal-title" hidden>
+    <div class="bopo-modal__backdrop" data-bopo-close></div>
+
+    <button type="button" class="bopo-modal__close" aria-label="關閉" data-bopo-close>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+    </button>
+
+    <div class="bopo-modal__dialog" role="document">
+        <div class="bopo-modal__hero">
+            <picture>
+                <source media="(min-width: 600px)" srcset="/images/zeroegg-app/feature-graphic.png">
+                <img src="/images/zeroegg-app/feature-graphic.png" alt="零鴨蛋 App - 注音、筆順、數學、英文 四科一個 App 全包" loading="lazy" decoding="async">
+            </picture>
+        </div>
+
+        <div class="bopo-modal__body">
+            <h2 id="bopo-modal-title" class="bopo-modal__title">
+                零鴨蛋 <span class="bopo-modal__title-en">ZeroEgg App</span>
+            </h2>
+            <p class="bopo-modal__lead"><strong>注音・筆順・數學・英文，一個 App 全包。</strong>孩子的自學好夥伴，搭配集點獎勵系統，越練越起勁。完全離線、隱私第一。</p>
+
+            <!-- 上方主 CTA：依裝置自動顯示對應平台（iOS / Android）-->
+            <a class="bopo-primary-cta bopo-primary-cta--ios"
+               href="https://apps.apple.com/tw/app/id6763559099"
+               target="_blank" rel="noopener"
+               data-bopo-track="ios">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <path fill="currentColor" d="M17.52 13.4c-.02-2.07 1.68-3.06 1.76-3.11-.96-1.4-2.46-1.59-2.99-1.61-1.27-.13-2.49.75-3.13.75-.65 0-1.65-.73-2.71-.71-1.39.02-2.68.81-3.4 2.05-1.45 2.52-.37 6.24 1.04 8.28.69 1 1.51 2.12 2.58 2.08 1.04-.04 1.43-.67 2.69-.67 1.26 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2.02.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.34zM15.43 7.46c.57-.69.95-1.65.85-2.6-.82.03-1.81.54-2.4 1.23-.53.61-.99 1.58-.87 2.52.91.07 1.85-.46 2.42-1.15z"/>
+                </svg>
+                立即下載 iOS App
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" class="bopo-primary-cta__arrow">
+                    <path fill="currentColor" d="M14 5l-1.41 1.41L16.17 10H4v2h12.17l-3.58 3.59L14 17l6-6z"/>
+                </svg>
+            </a>
+            <a class="bopo-primary-cta bopo-primary-cta--android"
+               href="https://play.google.com/store/apps/details?id=tw.zeroegg.bopowrite"
+               target="_blank" rel="noopener"
+               data-bopo-track="android">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                    <path fill="currentColor" d="M17.6 9.48 19.3 6.5a.5.5 0 0 0-.86-.5l-1.72 2.98A9.78 9.78 0 0 0 12 8c-1.65 0-3.21.4-4.72 1l-1.72-3a.5.5 0 1 0-.86.5l1.7 2.97A9.5 9.5 0 0 0 2 17h20a9.5 9.5 0 0 0-4.4-7.52M7 14.5a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/>
+                </svg>
+                立即下載 Android App
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" class="bopo-primary-cta__arrow">
+                    <path fill="currentColor" d="M14 5l-1.41 1.41L16.17 10H4v2h12.17l-3.58 3.59L14 17l6-6z"/>
+                </svg>
+            </a>
+
+            <div class="bopo-modal__screens" aria-hidden="true">
+                <img src="/images/zeroegg-app/02-chinese.png" alt="" loading="lazy">
+                <img src="/images/zeroegg-app/04-math.png" alt="" loading="lazy">
+                <img src="/images/zeroegg-app/05-english.png" alt="" loading="lazy">
+            </div>
+
+            <div class="bopo-modal__whats-new">
+                <span class="bopo-modal__whats-new-tag">NEW</span>
+                <span>新增數學餵小雞、英文聽音手寫、家長集點獎勵系統</span>
+            </div>
+
+            <ul class="bopo-modal__features">
+                <li><span class="bopo-modal__feat-icon">✍️</span><div><strong>中文・注音筆順</strong>ㄅㄆㄇ 基礎 + 國字筆順動畫，跟著課本練字帖</div></li>
+                <li><span class="bopo-modal__feat-icon">🐣</span><div><strong>數學・餵小雞</strong>數的分解、加減乘除，難度自己挑</div></li>
+                <li><span class="bopo-modal__feat-icon">🔤</span><div><strong>英文・聽音手寫</strong>多種模式記單字：聽寫、翻譯填字、平假名字</div></li>
+                <li><span class="bopo-modal__feat-icon">🎁</span><div><strong>集點換獎勵</strong>家長自訂獎勵，孩子寫對就集點兌換</div></li>
+                <li><span class="bopo-modal__feat-icon">🛡️</span><div><strong>完全離線</strong>所有資料只存裝置本機，不上傳雲端</div></li>
+            </ul>
+
+            <div class="bopo-modal__cta-row">
+                <a class="bopo-store bopo-store--ios"
+                   href="https://apps.apple.com/tw/app/id6763559099"
+                   target="_blank" rel="noopener"
+                   data-bopo-track="ios">
+                    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                        <path fill="currentColor" d="M17.52 13.4c-.02-2.07 1.68-3.06 1.76-3.11-.96-1.4-2.46-1.59-2.99-1.61-1.27-.13-2.49.75-3.13.75-.65 0-1.65-.73-2.71-.71-1.39.02-2.68.81-3.4 2.05-1.45 2.52-.37 6.24 1.04 8.28.69 1 1.51 2.12 2.58 2.08 1.04-.04 1.43-.67 2.69-.67 1.26 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2.02.79-1.16 1.12-2.29 1.14-2.35-.03-.01-2.18-.84-2.2-3.34zM15.43 7.46c.57-.69.95-1.65.85-2.6-.82.03-1.81.54-2.4 1.23-.53.61-.99 1.58-.87 2.52.91.07 1.85-.46 2.42-1.15z"/>
+                    </svg>
+                    <span class="bopo-store__txt">
+                        <small>下載自</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+
+                <a class="bopo-store bopo-store--android"
+                   href="https://play.google.com/store/apps/details?id=tw.zeroegg.bopowrite"
+                   target="_blank" rel="noopener"
+                   data-bopo-track="android">
+                    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                        <path fill="currentColor" d="M17.6 9.48 19.3 6.5a.5.5 0 0 0-.86-.5l-1.72 2.98A9.78 9.78 0 0 0 12 8c-1.65 0-3.21.4-4.72 1l-1.72-3a.5.5 0 1 0-.86.5l1.7 2.97A9.5 9.5 0 0 0 2 17h20a9.5 9.5 0 0 0-4.4-7.52M7 14.5a1 1 0 1 1 1-1 1 1 0 0 1-1 1m10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1"/>
+                    </svg>
+                    <span class="bopo-store__txt">
+                        <small>下載自</small>
+                        <strong>Google Play</strong>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 手機底部分頁列：國語、數學、英文、App -->
+    <nav class="zg-tabbar" aria-label="快速切換：國語、數學、英文、App">
+            <a href="/tools/chinese" class="zg-tab">
+            <span class="zg-tab__icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+            <span class="zg-tab__label">國語</span>
+                    </a>
+            <a href="/tools/math" class="zg-tab is-active" aria-current="page">
+            <span class="zg-tab__icon" aria-hidden="true"><i class="fas fa-calculator"></i></span>
+            <span class="zg-tab__label">數學</span>
+                    </a>
+            <a href="/tools/english" class="zg-tab">
+            <span class="zg-tab__icon" aria-hidden="true"><i class="fas fa-spell-check"></i></span>
+            <span class="zg-tab__label">英文</span>
+                    </a>
+            <a href="/bopowrite" class="zg-tab" data-bopo-open-modal data-bopo-source="tabbar">
+            <span class="zg-tab__icon" aria-hidden="true"><span class="zg-tab__app">ㄅ</span></span>
+            <span class="zg-tab__label">App</span>
+            <span class="zg-tab__badge">免費</span>        </a>
+    </nav>
+<script>
+(function () {
+    // 打字時（鍵盤開著）收起分頁列：文字框、下拉選單、可編輯區
+    var typing = function (el) {
+        if (!el || !el.tagName) return false;
+        if (el.isContentEditable) return true;
+        if (el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') return true;
+        return el.tagName === 'INPUT' && !/^(checkbox|radio|button|submit|reset|range|color|file|image)$/i.test(el.type || '');
+    };
+    document.addEventListener('focusin', function (e) {
+        if (typing(e.target)) document.body.classList.add('zg-typing');
+    });
+    document.addEventListener('focusout', function () {
+        setTimeout(function () {
+            if (!typing(document.activeElement)) document.body.classList.remove('zg-typing');
+        }, 0);
+    });
+})();
+</script>
+    
+    <!-- Footer -->
+    <footer class="mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>ZeroEgg 零鴨蛋</h5>
+                    <p class="text-muted">讓每個孩子都能快樂學習，世上再無零鴨蛋。</p>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h6>快速連結</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/tools" class="text-muted">學習工具</a></li>
+                        <li><a href="/about" class="text-muted">關於我們</a></li>
+                        <!-- <li><a href="/contact" class="text-muted">聯絡我們</a></li> -->
+                        <li><a href="/privacy" class="text-muted">隱私政策</a></li>
+                    </ul>
+                </div>
+                <!-- 聯絡資訊暫時隱藏
+                <div class="col-md-4">
+                    <h6>聯絡資訊</h6>
+                    <p class="text-muted">
+                        <i class="fas fa-envelope"></i> contact@zeroegg.tw<br>
+                        <i class="fas fa-phone"></i> (02) 2345-6789
+                    </p>
+                </div>
+                -->
+                <div class="col-6 col-md-4">
+                    <h6>零鴨蛋 App</h6>
+                    <p class="text-muted small mb-2">注音・筆順・數學・英文</p>
+                    <div class="zg-foot-stores">
+                        <a href="https://apps.apple.com/tw/app/id6763559099" target="_blank" rel="noopener" data-bopo-track="ios"><i class="fab fa-apple" aria-hidden="true"></i> App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=tw.zeroegg.bopowrite" target="_blank" rel="noopener" data-bopo-track="android"><i class="fab fa-google-play" aria-hidden="true"></i> Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center text-muted mb-0">
+                &copy; 2026 ZeroEgg. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://zeroegg.tw/js/app.js"></script>
+    
+    <!-- Google Analytics 進階追蹤腳本 -->
+    <script src="https://zeroegg.tw/js/analytics-tracking.js" defer></script>
+        <script src="https://zeroegg.tw/js/bopowrite-promo.js?v=1789467921" defer></script>
+    <!-- Structured Data -->
+            <script type="application/ld+json">
+        {
+    "@context": "https:\/\/schema.org",
+    "@type": "WebApplication",
+    "name": "直式計算練習產生器",
+    "url": "https:\/\/zeroegg.tw\/tools\/math-vertical",
+    "description": "免費國小數學直式計算練習產生器，依 108 課綱二到六年級出題：直式加減（進位、退位）、直式乘法、直式除法與長除法、小數直式，附方格與完整答案卷，可列印 A4 或存成 PDF。",
+    "image": "https:\/\/zeroegg.tw\/images\/og\/math-vertical-og.png",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "browserRequirements": "需要 JavaScript；列印建議使用電腦版 Chrome 或 Edge",
+    "inLanguage": "zh-TW",
+    "isAccessibleForFree": true,
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD"
+    },
+    "educationalLevel": "國小二年級至六年級",
+    "learningResourceType": [
+        "學習單",
+        "練習題",
+        "答案卷"
+    ],
+    "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": [
+            "teacher",
+            "parent",
+            "student"
+        ]
+    },
+    "teaches": [
+        "加減直式計算（進位、退位）",
+        "乘法直式計算",
+        "除法直式計算（長除法）",
+        "小數加減直式",
+        "小數乘法直式",
+        "小數除法直式"
+    ],
+    "educationalAlignment": [
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-2-2"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-3-2"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-3-3"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-3-5"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-3-10"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-4-2"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-4-7"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-5-8"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-5-9"
+        },
+        {
+            "@type": "AlignmentObject",
+            "alignmentType": "educationalSubject",
+            "educationalFramework": "十二年國民基本教育課程綱要（108 課綱）數學領域",
+            "targetName": "N-6-4"
+        }
+    ],
+    "provider": {
+        "@type": "Organization",
+        "name": "零鴨蛋 ZeroEgg",
+        "url": "https:\/\/zeroegg.tw"
+    }
+}        </script>
+        
+    <!-- Default Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "ZeroEgg 零鴨蛋",
+        "description": "專為台灣小學生設計的免費線上學習工具平台",
+        "url": "https://zeroegg.tw",
+        "logo": "https://zeroegg.tw/images/og-image.jpg",
+        "sameAs": [
+            "https://www.facebook.com/zeroegg.tw",
+            "https://www.instagram.com/zeroegg.tw"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "areaServed": "TW",
+            "availableLanguage": ["Chinese"]
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+        <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首頁",
+            "item": "https://zeroegg.tw/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "學習工具",
+            "item": "https://zeroegg.tw/tools"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "數學相關",
+            "item": "https://zeroegg.tw/tools/math"
+        },
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "直式計算練習產生器"
+        }
+    ]
+}    </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"d7b1b3d9bba7482ebcc21b6e34150629","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
