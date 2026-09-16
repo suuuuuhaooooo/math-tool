@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>庫口袋 Cool Pocket - 中小學數學無限題庫</title>
+    <link rel="icon" href="https://suuuuuhaooooo.github.io/-/favicon.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root { --primary: #8e9775; --dark: #5b6348; --bg: #f5f5f5; }
+        body { background-color: var(--bg); font-family: "Noto Serif TC", serif; color: #333; -webkit-font-smoothing: antialiased; }
+        .navbar { background: white; padding: 10px 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.05); }
+        .brand-title img { height: 45px; width: auto; object-fit: contain; }
+        .hero { background: white; padding: 50px 0; margin-bottom: 30px; border-bottom: 1px solid #eee; }
+        .hero h1 { color: var(--dark); font-weight: 700; letter-spacing: 2px; }
+        .grade-card { border: none; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border-top: 5px solid var(--primary); transition: transform 0.2s; background: white; }
+        .grade-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .grade-card-title { color: var(--dark); font-weight: 700; letter-spacing: 1px; }
+        .btn-brand { background: var(--primary); color: white; transition: 0.3s; }
+        .btn-brand:hover { background: var(--dark); color: white; }
+        .text-brand { color: var(--primary) !important; }
+        .math-related-item { display: block; padding: 15px; border: 1px solid #dee2e6; border-radius: 12px; background: #fff; color: inherit; text-decoration: none; transition: all 0.2s ease; }
+        .math-related-item:hover { border-color: var(--primary); background: #f7fbf4; box-shadow: 0 4px 12px rgba(142, 151, 117, 0.1); transform: translateY(-2px); }
+        .math-related-item strong { display: block; font-size: 15px; color: #212529; margin-bottom: 5px;}
+        .math-related-item span { display: block; font-size: 13px; color: #6c757d; line-height: 1.45; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="text-decoration-none text-muted fw-bold">
+                <i class="fas fa-arrow-left me-1"></i> 回入口網
+            </a>
+            <a href="index.html" class="brand-title text-decoration-none">
+                <img src="https://suuuuuhaooooo.github.io/-/CoolPocket.svg" alt="庫口袋 Cool Pocket">
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero text-center">
+        <div class="container">
+            <h1 class="mb-3"><i class="fas fa-layer-group text-brand me-2"></i>庫口袋・數學無限產生器</h1>
+            <p class="text-muted mb-0" style="font-size: 1.1rem;">點選下方工具或年段，即可自動隨機出題，支援線上預覽與 A4 列印。</p>
+        </div>
+    </div>
+
+    <div class="container mb-5" style="max-width: 900px;">
+        
+        <!-- 跨年段綜合工具 (連結加上 tools/ ) -->
+        <h2 class="h5 fw-bold mb-3 text-brand"><i class="fas fa-star me-2"></i>跨年段綜合工具區</h2>
+        <div class="row g-3 mb-5">
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-exam.html">
+                    <strong><i class="fas fa-file-signature text-brand me-1"></i> 綜合數學考卷產生器</strong>
+                    <span>自訂題型、配分，組合成大題自動算總分，完美還原真實考卷。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-vertical.html">
+                    <strong><i class="fas fa-calculator text-brand me-1"></i> 直式計算練習產生器</strong>
+                    <span>加減乘除、小數直式專項特訓，附實體方格幫助對齊位值。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-mental.html">
+                    <strong><i class="fas fa-bolt text-brand me-1"></i> 口算與心算練習產生器</strong>
+                    <span>加減法、九九乘法、除法口算，一頁數十題，訓練直覺反射。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-times-table.html">
+                    <strong><i class="fas fa-times text-brand me-1"></i> 九九乘法表產生器</strong>
+                    <span>九九乘法表列印、縱橫表填空與亂序練習單。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-clock.html">
+                    <strong><i class="fas fa-clock text-brand me-1"></i> 時鐘與時間練習產生器</strong>
+                    <span>看時鐘、畫指針、經過時間計算與 24 小時制跨日計算。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-money.html">
+                    <strong><i class="fas fa-coins text-brand me-1"></i> 錢幣與購物練習產生器</strong>
+                    <span>數錢、換錢、找錢，用最少張數付錢的生活應用題。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-place.html">
+                    <strong><i class="fas fa-ruler-horizontal text-brand me-1"></i> 位值、大數與數線產生器</strong>
+                    <span>位值表、到兆的大數數字與國字互換、小數位值與數線報讀。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-units.html">
+                    <strong><i class="fas fa-weight-hanging text-brand me-1"></i> 單位換算練習產生器</strong>
+                    <span>長度、容量、重量、面積、體積等各種單名數與複名數換算。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-mixed.html">
+                    <strong><i class="fas fa-plus text-brand me-1"></i> 四則混合運算產生器</strong>
+                    <span>先乘除後加減、括號先算、分配律與簡便計算。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-rounding.html">
+                    <strong><i class="fas fa-divide text-brand me-1"></i> 概數練習產生器</strong>
+                    <span>四捨五入、無條件進入/捨去，與除不盡的商取概數。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-fraction.html">
+                    <strong><i class="fas fa-layer-group text-brand me-1"></i> 分數練習產生器</strong>
+                    <span>約分通分、等值分數、帶分數與分數的四則運算。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-factors.html">
+                    <strong><i class="fas fa-star text-brand me-1"></i> 因數與倍數產生器</strong>
+                    <span>最大公因數、最小公倍數、質數判斷與短除法。</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a class="math-related-item" href="tools/math-geometry.html">
+                    <strong><i class="fas fa-shapes text-brand me-1"></i> 幾何練習產生器</strong>
+                    <span>量角器、內角和、圖形面積、扇形面積與柱體體積。</span>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="h5 fw-bold mb-3 text-brand"><i class="fas fa-folder-open me-2"></i>單元題型專區</h2>
+        <div class="card grade-card mb-4">
+            <div class="card-body p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h4 grade-card-title m-0"><i class="fas fa-graduation-cap me-2 text-brand"></i>國小六年級專區</h2>
+                    <span class="badge bg-light text-dark border">已收錄 9 大單元</span>
+                </div>
+                <p class="text-muted mb-4">包含因數倍數、分數除法、小數除法、數量關係、比與比值、圓面積與周長、速率與比例尺等六上六下核心題型。</p>
+                <a href="grade6/index.html" class="btn btn-brand w-100 py-3 fw-bold" style="letter-spacing: 2px;">
+                    進入六年級題庫總覽 <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="card grade-card opacity-50" style="border-top-color: #ccc;">
+            <div class="card-body p-4">
+                <h2 class="h5 grade-card-title text-secondary m-0"><i class="fas fa-school me-2"></i>國小五年級專區</h2>
+                <p class="text-muted small mt-2 mb-0">全新題型模組建置中，敬請期待...</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; color: #aaa; margin: 40px 0 20px; letter-spacing: 1px; font-family: Arial, sans-serif;">
+        &copy; 2026 蘇昊數理 Su-Hao Math/Science. All rights reserved.
+    </div>
+
+</body>
+</html>
