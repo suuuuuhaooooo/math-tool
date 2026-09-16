@@ -2,54 +2,93 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中小學數學無限計算題產生器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>庫口袋 Cool Pocket - 中小學數學無限題庫</title>
+    <meta name="description" content="專屬中小學的雲端自動組卷與無限計算題產生器。">
+    <link rel="icon" href="https://suuuuuhaooooo.github.io/-/favicon.png" type="image/png">
+    
+    <!-- 統一使用明體 Noto Serif TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        body { background-color: #f8f9fa; font-family: "Noto Sans TC", sans-serif; }
-        .hero { background: #ffffff; border-bottom: 1px solid #dee2e6; padding: 40px 0; margin-bottom: 30px; }
-        .grade-card { border: none; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: transform 0.2s; background: #fff; margin-bottom: 25px; }
-        .grade-card:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); }
+        :root { 
+            --primary: #8e9775; 
+            --dark: #5b6348; 
+            --bg: #f5f5f5; 
+        }
+        body { 
+            background-color: var(--bg); 
+            font-family: "Noto Serif TC", serif; 
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* 頂部導覽列 */
+        .navbar { background: white; padding: 10px 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.05); }
+        .brand-title img { height: 45px; width: auto; object-fit: contain; }
+        
+        /* 橫幅與卡片 */
+        .hero { background: white; padding: 50px 0; margin-bottom: 30px; border-bottom: 1px solid #eee; }
+        .hero h1 { color: var(--dark); font-weight: 700; letter-spacing: 2px; }
+        
+        .grade-card { 
+            border: none; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); 
+            border-top: 5px solid var(--primary); transition: transform 0.2s; background: white; 
+        }
+        .grade-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .grade-card-title { color: var(--dark); font-weight: 700; letter-spacing: 1px; }
+        
+        .btn-brand { background: var(--primary); color: white; transition: 0.3s; }
+        .btn-brand:hover { background: var(--dark); color: white; }
+        .text-brand { color: var(--primary) !important; }
     </style>
 </head>
 <body>
 
+    <nav class="navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="brand-title text-decoration-none">
+                <img src="https://suuuuuhaooooo.github.io/-/CoolPocket.svg" alt="庫口袋 Cool Pocket">
+            </a>
+            <a class="btn btn-brand btn-sm px-4 rounded-pill fw-bold" href="https://suuuuuhaooooo.github.io/" target="_blank">蘇昊數理資源</a>
+        </div>
+    </nav>
+
     <div class="hero text-center">
         <div class="container">
-            <h1 class="fw-bold mb-2"><i class="fas fa-calculator text-primary me-2"></i>中小學數學無限計算題產生器</h1>
-            <p class="text-muted mb-0">點選下方年段與工具，即可自動隨機出題，支援線上預覽、切換解答卷與 A4 完美列印 PDF。</p>
+            <h1 class="mb-3"><i class="fas fa-layer-group text-brand me-2"></i>中小學數學無限計算題庫</h1>
+            <p class="text-muted mb-0" style="font-size: 1.1rem;">點選下方年段，即可自動隨機出題，支援線上預覽與 A4 完美列印 PDF。</p>
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container mb-5" style="max-width: 900px;">
         <!-- 六年級專區 -->
-        <div class="card grade-card shadow-sm">
-            <div class="card-header bg-white fw-bold py-3 fs-5 text-primary">
-                <i class="fas fa-graduation-cap me-2"></i>國小六年級數學專區
-            </div>
-            <div class="card-body">
-                <div class="list-group list-group-flush">
-                    <a href="grade6/index.html" class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center">
-                        <div>
-                            <span class="fw-bold fs-6">進入六年級題庫總覽</span>
-                            <p class="text-muted small mb-0">包含第 1 章（因倍數）、第 2 章（分數除法）、第 4 章（小數除法）、第 5 章（比與比值）</p>
-                        </div>
-                        <i class="fas fa-chevron-right text-muted"></i>
-                    </a>
+        <div class="card grade-card mb-4">
+            <div class="card-body p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h4 grade-card-title m-0"><i class="fas fa-graduation-cap me-2 text-brand"></i>國小六年級數學專區</h2>
+                    <span class="badge bg-light text-dark border">已收錄 10 大單元</span>
                 </div>
+                <p class="text-muted mb-4">包含因倍數、分數/小數除法、數量關係、速率、圓面積、放大圖、以及最強大的直式計算產生器。</p>
+                <a href="grade6/index.html" class="btn btn-brand w-100 py-3 fw-bold" style="letter-spacing: 2px;">
+                    進入六年級題庫總覽 <i class="fas fa-arrow-right ms-1"></i>
+                </a>
             </div>
         </div>
 
-        <!-- 預留未來擴充區塊 -->
-        <div class="card grade-card shadow-sm opacity-50">
-            <div class="card-header bg-white fw-bold py-3 text-secondary">
-                <i class="fas fa-school me-2"></i>國小五年級（即將推出）
-            </div>
-            <div class="card-body">
-                <p class="text-muted small mb-0">敬請期待更多年段與單元擴充...</p>
+        <!-- 預留區塊 -->
+        <div class="card grade-card opacity-50" style="border-top-color: #ccc;">
+            <div class="card-body p-4">
+                <h2 class="h5 grade-card-title text-secondary m-0"><i class="fas fa-school me-2"></i>國小五年級專區</h2>
+                <p class="text-muted small mt-2 mb-0">全新題型模組建置中，敬請期待...</p>
             </div>
         </div>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; color: #aaa; margin: 40px 0 20px; letter-spacing: 1px; font-family: Arial, sans-serif;">
+        &copy; 2026 蘇昊數理 Su-Hao Math/Science. All rights reserved.
     </div>
 
 </body>
